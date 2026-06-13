@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>王天予 - 个人主页</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-card: #1e293b;
+      --bg-card-hover: #273449;
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-dim: #0ea5e9;
+      --border: #334155;
+      --tag-bg: #1e3a5f;
+      --tag-text: #7dd3fc;
+      --gold: #fbbf24;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Hero */
+    .hero {
+      padding: 100px 24px 64px;
+      text-align: center;
+      background: radial-gradient(ellipse at 50% 0%, #1e3a5f 0%, transparent 60%);
+    }
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #e2e8f0 0%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero .tagline {
+      font-size: 18px;
+      color: var(--text-muted);
+      margin-top: 12px;
+    }
+    .hero .contact {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .hero .contact a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+    .hero .contact a:hover { color: var(--accent); text-decoration: none; }
+
+    /* Layout */
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section { margin-bottom: 64px; }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 24px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      margin-bottom: 16px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      background: var(--bg-card-hover);
+      border-color: #475569;
+    }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .card-title {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .card-subtitle {
+      font-size: 14px;
+      color: var(--accent);
+      font-weight: 500;
+    }
+    .card-date {
+      font-size: 13px;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+    .card-body { font-size: 14px; color: var(--text-muted); }
+    .card-body p { margin-bottom: 8px; }
+    .card-body p:last-child { margin-bottom: 0; }
+
+    /* Tags */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 12px;
+    }
+    .tag {
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      font-size: 12px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    /* Stats */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+    }
+    .stat {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+    }
+    .stat-value {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    /* Research Grid */
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    /* Timeline */
+    .timeline-item {
+      position: relative;
+      padding-left: 24px;
+      border-left: 2px solid var(--border);
+      padding-bottom: 24px;
+    }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -5px;
+      top: 6px;
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    /* Award list */
+    .award-list { list-style: none; }
+    .award-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+    }
+    .award-list li:last-child { border-bottom: none; }
+    .award-name { color: var(--text); }
+    .award-meta {
+      color: var(--text-muted);
+      font-size: 13px;
+      white-space: nowrap;
+      text-align: right;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 48px 24px;
+      color: var(--text-muted);
+      font-size: 13px;
+      border-top: 1px solid var(--border);
+      margin-top: 32px;
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 32px; }
+      .hero { padding: 60px 20px 40px; }
+      .card-header { flex-direction: column; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Hero -->
+<header class="hero">
+  <h1>王天予</h1>
+  <p class="tagline">苏州大学 软件工程 · 学无止境，勇攀高峰</p>
+  <div class="contact">
+    <span>tywangcs@foxmail.com</span>
+    <span>189-6361-1891</span>
+    <a href="https://github.com/RealClearwave" target="_blank">GitHub</a>
+    <span>江苏南京</span>
+  </div>
+</header>
+
+<div class="container">
+
+<!-- Education & Stats -->
+<section>
+  <h2 class="section-title">教育背景</h2>
+  <div class="stats-grid">
+    <div class="stat">
+      <div class="stat-value">3.83</div>
+      <div class="stat-label">课程绩点</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">9/135</div>
+      <div class="stat-label">专业排名 (6%)</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">659</div>
+      <div class="stat-label">CET-6</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">370</div>
+      <div class="stat-label">CCF CSP</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 16px;">
+    <div class="card-header">
+      <div>
+        <div class="card-title">苏州大学 · 软件工程（本科）</div>
+        <div class="card-subtitle">计算机科学与技术学院</div>
+      </div>
+      <div class="card-date">2023 年 - 至今</div>
+    </div>
+    <div class="card-body">
+      <p>211 工程、双一流建设高校。综合测评排名（预计）3/135（前 2%）。</p>
+      <p>本科早期即接触算法竞赛，多次参加 NOIP 等信息学竞赛，GitHub 活跃开发者。</p>
+    </div>
+  </div>
+</section>
+
+<!-- Honors -->
+<section>
+  <h2 class="section-title">荣誉奖项</h2>
+  <ul class="award-list">
+    <li>
+      <span class="award-name">苏州大学学习优秀奖学金 特等奖</span>
+      <span class="award-meta">2024-2025</span>
+    </li>
+    <li>
+      <span class="award-name">苏州大学创新创业奖学金 特等奖</span>
+      <span class="award-meta">2023-2024</span>
+    </li>
+    <li>
+      <span class="award-name">苏州大学学习优秀奖学金 一等奖</span>
+      <span class="award-meta">2023-2024</span>
+    </li>
+    <li>
+      <span class="award-name">苏州大学综合奖学金</span>
+      <span class="award-meta">2024-2025</span>
+    </li>
+    <li>
+      <span class="award-name">苏州大学精神文明专项奖学金</span>
+      <span class="award-meta">2024-2025</span>
+    </li>
+    <li>
+      <span class="award-name">苏州大学创新创业创意大赛 三等奖</span>
+      <span class="award-meta">2024</span>
+    </li>
+  </ul>
+</section>
+
+<!-- Competition -->
+<section>
+  <h2 class="section-title">学科竞赛</h2>
+  <ul class="award-list">
+    <li>
+      <span class="award-name"><strong>国家级一等奖</strong> · 中国机器人及人工智能大赛</span>
+      <span class="award-meta">2024.08</span>
+    </li>
+    <li>
+      <span class="award-name"><strong>国家级三等奖</strong> · 团体程序设计天梯赛 (GPLT)</span>
+      <span class="award-meta">2024.04</span>
+    </li>
+    <li>
+      <span class="award-name"><strong>国家级优秀奖</strong> · 蓝桥杯 C++ A 组</span>
+      <span class="award-meta">2024.04</span>
+    </li>
+    <li>
+      <span class="award-name">蓝桥杯软件和信息技术专业人才大赛 江苏省一等奖</span>
+      <span class="award-meta">2024.04</span>
+    </li>
+  </ul>
+</section>
+
+<!-- Research -->
+<section>
+  <h2 class="section-title">科研经历</h2>
+
+  <div class="research-grid">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">AutoConcept</div>
+        <div class="card-date">PRICAI 2026 在投</div>
+      </div>
+      <div class="card-subtitle" style="margin-bottom:8px;">可控偏好感知组合图像检索</div>
+      <div class="card-body">
+        <p>提出显式概念记忆机制，将查询相关的概念证据构建为正负偏好概念库，通过视觉特征过滤与相关性门控实现 training-free 候选重排序。在 FashionIQ 上显著提升 R@10（WeiMoCIR 0.1125→0.1379, LinCIR 0.2605→0.3009），同时提供可解释的概念激活与自适应插值机制。</p>
+      </div>
+      <div class="tags">
+        <span class="tag">CIR</span><span class="tag">Concept Memory</span><span class="tag">Training-Free</span><span class="tag">FashionIQ</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">VICER</div>
+        <div class="card-date">进行中</div>
+      </div>
+      <div class="card-subtitle" style="margin-bottom:8px;">视觉-概念增强检索系统</div>
+      <div class="card-body">
+        <p>多模态零样本生成系统，通过反向概念匹配识别长尾/个性化概念，融合图像、文本与指令嵌入进行 CIR 多模态对齐，引入原图残差回传保留视觉细节。在自建长尾零样本数据集上显著优于传统方法。</p>
+      </div>
+      <div class="tags">
+        <span class="tag">MLLM</span><span class="tag">Zero-Shot</span><span class="tag">ViT</span><span class="tag">Concept Matching</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Critic-Guided Multi-Agent Text Detox</div>
+        <div class="card-date">发表中</div>
+      </div>
+      <div class="card-subtitle" style="margin-bottom:8px;">多智能体文本有害缓和框架</div>
+      <div class="card-body">
+        <p>多智能体框架通过角色分工完成 toxic span 定位、语气降级、改写生成与语义校验，以多重 critic 闭环反馈排序优化生成。在 UCB 数据集上 MoAGAN R² 提升至 0.6848（基线 0.4987），Bilibili-Xiaoheiwu 检测准确率 0.7386。</p>
+      </div>
+      <div class="tags">
+        <span class="tag">LLM Agents</span><span class="tag">Text Detox</span><span class="tag">Multi-Agent</span><span class="tag">Content Safety</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">在线评测系统中的边缘计算应用</div>
+        <div class="card-date">省刊发表</div>
+      </div>
+      <div class="card-subtitle" style="margin-bottom:8px;">边缘计算 + OJ 评测架构优化</div>
+      <div class="card-body">
+        <p>将评测任务下放到客户端执行，结合 K-means 异常检测、代码交叉验证与基准测试时间限制。实验表明并发 >3 时分布式评测耗时优势明显，异常检测精确率 0.66 / 召回率 0.67，适合轻量化部署场景。</p>
+      </div>
+      <div class="tags">
+        <span class="tag">Edge Computing</span><span class="tag">OJ System</span><span class="tag">K-means</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Work Experience -->
+<section>
+  <h2 class="section-title">实践经历</h2>
+  <div class="timeline-item">
+    <div class="card-header">
+      <div>
+        <div class="card-title">南京大学 推理与学习 (R&L) 联合实验室（万维艾斯）</div>
+        <div class="card-subtitle">科研实习</div>
+      </div>
+      <div class="card-date">2025 年夏</div>
+    </div>
+    <div class="card-body">
+      <p>参与某研究所机器学习算法昇腾平台演示项目开发，负责模型复现与移植（Nvidia / Huawei Ascend 双平台）、数据集处理、LoRA 微调和用户界面开发。参与道路安全视觉检测系统数据标注平台开发。</p>
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="card-header">
+      <div>
+        <div class="card-title">苏州大学 NLP 实验室</div>
+        <div class="card-subtitle">本科科研</div>
+      </div>
+      <div class="card-date">2025 年 - 至今</div>
+    </div>
+    <div class="card-body">
+      <p>加入创新创业训练项目"面向多模态信息的幽默生成系统"，负责数据集收集、模型设计、实验处理与论文写作。</p>
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="card-header">
+      <div>
+        <div class="card-title">苏州大学 Beelab 实验室</div>
+        <div class="card-subtitle">本科科研</div>
+      </div>
+      <div class="card-date">2024 年 - 至今</div>
+    </div>
+    <div class="card-body">
+      <p>参与基于国产自动驾驶平台与芯片的智能车自动驾驶系统开发，基于 Apollo 智驾框架实现精准感知、路径规划与自主驾驶的无人货运小车方案。获苏州大学 2024 创新创业创意大赛三等奖。</p>
+      <div class="tags">
+        <span class="tag">Apollo</span><span class="tag">Autonomous Driving</span><span class="tag">Sensor Fusion</span><span class="tag">UNet</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Skills -->
+<section>
+  <h2 class="section-title">技能</h2>
+  <div style="display:flex;flex-wrap:wrap;gap:8px;">
+    <span class="tag" style="font-size:14px;padding:6px 16px;">Python</span>
+    <span class="tag" style="font-size:14px;padding:6px 16px;">C/C++</span>
+    <span class="tag" style="font-size:14px;padding:6px 16px;">PyTorch</span>
+    <span class="tag" style="font-size:14px;padding:6px 16px;">Deep Learning</span>
+    <span class="tag" style="font-size:14px;padding:6px 16px;">Computer Vision</span>
+    <span class="tag" style="font-size:14px;padding:6px 16px;">NLP</span>
+    <span class="tag" style="font-size:14px;padding:6px 16px;">Multi-modal AI</span>
+    <span class="tag" style="font-size:14px;padding:6px 16px;">LLM Fine-tuning</span>
+    <span class="tag" style="font-size:14px;padding:6px 16px;">LoRA</span>
+    <span class="tag" style="font-size:14px;padding:6px 16px;">Apollo</span>
+    <span class="tag" style="font-size:14px;padding:6px 16px;">Git</span>
+    <span class="tag" style="font-size:14px;padding:6px 16px;">Linux</span>
+  </div>
+</section>
+
+<!-- Future Plan -->
+<section>
+  <h2 class="section-title">硕士阶段规划</h2>
+  <div class="card">
+    <div class="card-body">
+      <p><strong>潜心研究，甘坐冷板凳</strong> — 入学后专注科研，耐心打磨基础技能，深入阅读前沿文献，勇于承担基础性工作，积累经验，夯实学术根基。</p>
+      <p style="margin-top: 12px;"><strong>继往开来，发挥优势</strong> — 充分利用本科科研与竞赛经验，深耕多模态、视觉语言与智能系统方向，争取高水平科研成果，培养独立创新能力。</p>
+      <p style="margin-top: 12px;"><strong>积极实践，产学研结合</strong> — 积极参与校内外项目与实习，将理论与实践结合，提升工程能力，增强产学研综合素养。</p>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <p>&copy; 2026 王天予 · Powered by GitHub Pages · realclearwave.github.io</p>
+</footer>
+
+</body>
+</html>
