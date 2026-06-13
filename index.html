@@ -3,497 +3,883 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>王天予 - 个人主页</title>
+  <meta name="author" content="王天予">
+  <meta name="description" content="王天予 · 苏州大学 · 软件工程">
+  <meta name="theme-color" content="#1565c0">
+
+  <title>王天予 · 苏州大学</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap"></noscript>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
+  <!-- Academicons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.4/css/academicons.min.css">
+
   <style>
+    /* ===== Variables ===== */
     :root {
-      --bg: #0f172a;
-      --bg-card: #1e293b;
-      --bg-card-hover: #273449;
-      --text: #e2e8f0;
-      --text-muted: #94a3b8;
-      --accent: #38bdf8;
-      --accent-dim: #0ea5e9;
-      --border: #334155;
-      --tag-bg: #1e3a5f;
-      --tag-text: #7dd3fc;
-      --gold: #fbbf24;
+      --primary: #1565c0;
+      --primary-light: #1e88e5;
+      --primary-dark: #0d47a1;
+      --bg: #fafafa;
+      --bg-card: #ffffff;
+      --text: #212121;
+      --text-secondary: #616161;
+      --text-muted: #9e9e9e;
+      --border: #e0e0e0;
+      --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+      --shadow-hover: 0 4px 12px rgba(0,0,0,0.1), 0 2px 4px rgba(0,0,0,0.06);
+      --nav-height: 56px;
+      --sidebar-width: 280px;
+      --radius: 8px;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    [data-theme="dark"] {
+      --primary: #42a5f5;
+      --primary-light: #64b5f6;
+      --primary-dark: #1976d2;
+      --bg: #121212;
+      --bg-card: #1e1e1e;
+      --text: #e0e0e0;
+      --text-secondary: #b0b0b0;
+      --text-muted: #808080;
+      --border: #333333;
+      --shadow: 0 1px 3px rgba(0,0,0,0.3);
+      --shadow-hover: 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    /* ===== Reset ===== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-height) + 16px); }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.7;
+      line-height: 1.75;
       -webkit-font-smoothing: antialiased;
     }
 
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    h1, h2, h3, h4 { font-family: 'Lora', 'Noto Serif SC', serif; }
 
-    /* Hero */
-    .hero {
-      padding: 100px 24px 64px;
-      text-align: center;
-      background: radial-gradient(ellipse at 50% 0%, #1e3a5f 0%, transparent 60%);
-    }
-    .hero h1 {
-      font-size: 48px;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      background: linear-gradient(135deg, #e2e8f0 0%, #38bdf8 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .hero .tagline {
-      font-size: 18px;
-      color: var(--text-muted);
-      margin-top: 12px;
-    }
-    .hero .contact {
-      margin-top: 20px;
+    a { color: var(--primary); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--primary-dark); text-decoration: underline; }
+
+    /* ===== Top Navbar ===== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--nav-height);
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      z-index: 1000;
       display: flex;
-      justify-content: center;
-      gap: 24px;
-      flex-wrap: wrap;
-      font-size: 14px;
-      color: var(--text-muted);
-    }
-    .hero .contact a {
-      display: inline-flex;
       align-items: center;
-      gap: 6px;
-      color: var(--text-muted);
-      transition: color 0.2s;
     }
-    .hero .contact a:hover { color: var(--accent); text-decoration: none; }
-
-    /* Layout */
-    .container {
-      max-width: 960px;
+    .navbar-inner {
+      max-width: 1200px;
+      width: 100%;
       margin: 0 auto;
       padding: 0 24px;
-    }
-
-    section { margin-bottom: 64px; }
-
-    .section-title {
-      font-size: 24px;
-      font-weight: 700;
-      margin-bottom: 28px;
       display: flex;
       align-items: center;
-      gap: 10px;
-    }
-    .section-title::before {
-      content: '';
-      display: inline-block;
-      width: 4px;
-      height: 24px;
-      background: var(--accent);
-      border-radius: 2px;
-    }
-
-    /* Cards */
-    .card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 28px;
-      margin-bottom: 16px;
-      transition: background 0.2s, border-color 0.2s;
-    }
-    .card:hover {
-      background: var(--bg-card-hover);
-      border-color: #475569;
-    }
-    .card-header {
-      display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 12px;
     }
-    .card-title {
+    .navbar-brand {
+      font-family: 'Lora', serif;
       font-size: 17px;
       font-weight: 600;
       color: var(--text);
-    }
-    .card-subtitle {
-      font-size: 14px;
-      color: var(--accent);
-      font-weight: 500;
-    }
-    .card-date {
-      font-size: 13px;
-      color: var(--text-muted);
       white-space: nowrap;
     }
-    .card-body { font-size: 14px; color: var(--text-muted); }
-    .card-body p { margin-bottom: 8px; }
-    .card-body p:last-child { margin-bottom: 0; }
-
-    /* Tags */
-    .tags {
+    .navbar-brand:hover { color: var(--primary); text-decoration: none; }
+    .navbar-links {
       display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 12px;
+      align-items: center;
+      gap: 4px;
+      list-style: none;
     }
-    .tag {
-      background: var(--tag-bg);
-      color: var(--tag-text);
-      font-size: 12px;
-      padding: 3px 10px;
-      border-radius: 20px;
+    .navbar-links a {
+      display: block;
+      padding: 6px 12px;
+      font-size: 14px;
       font-weight: 500;
+      color: var(--text-secondary);
+      border-radius: 6px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .navbar-links a:hover,
+    .navbar-links a.active {
+      color: var(--primary);
+      background: rgba(21,101,192,0.08);
+      text-decoration: none;
+    }
+    .navbar-toggler {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 20px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      padding: 4px 8px;
+    }
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-size: 15px;
+      cursor: pointer;
+      color: var(--text-secondary);
+      margin-left: 8px;
+      transition: background 0.2s;
+    }
+    .theme-toggle:hover { background: rgba(21,101,192,0.08); }
+
+    @media (max-width: 768px) {
+      .navbar-links { display: none; }
+      .navbar-toggler { display: block; }
+      .navbar-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: var(--nav-height);
+        left: 0; right: 0;
+        background: var(--bg-card);
+        border-bottom: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        padding: 8px;
+      }
     }
 
-    /* Stats */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 12px;
+    /* ===== Page Layout ===== */
+    .page-body {
+      display: flex;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: calc(var(--nav-height) + 32px) 24px 48px;
+      gap: 40px;
     }
-    .stat {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 20px;
+
+    /* ===== Left Sidebar ===== */
+    .sidebar {
+      width: var(--sidebar-width);
+      flex-shrink: 0;
+      position: sticky;
+      top: calc(var(--nav-height) + 24px);
+      align-self: flex-start;
       text-align: center;
     }
-    .stat-value {
-      font-size: 32px;
-      font-weight: 700;
-      color: var(--accent);
-      line-height: 1;
+    .sidebar .avatar {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: var(--shadow);
+      background: var(--border);
+      /* fallback: initials */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 72px;
+      font-family: 'Lora', serif;
+      color: var(--bg-card);
+      background: linear-gradient(135deg, #1565c0, #42a5f5);
+      margin: 0 auto 20px;
     }
-    .stat-label {
+    .sidebar .name {
+      font-family: 'Lora', serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .sidebar .title-role {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+    .sidebar .affiliation {
       font-size: 13px;
       color: var(--text-muted);
-      margin-top: 6px;
+      margin-top: 2px;
     }
-
-    /* Research Grid */
-    .research-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 16px;
-    }
-
-    /* Timeline */
-    .timeline-item {
-      position: relative;
-      padding-left: 24px;
-      border-left: 2px solid var(--border);
-      padding-bottom: 24px;
-    }
-    .timeline-item:last-child { padding-bottom: 0; }
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -5px;
-      top: 6px;
-      width: 8px;
-      height: 8px;
-      background: var(--accent);
-      border-radius: 50%;
-    }
-
-    /* Award list */
-    .award-list { list-style: none; }
-    .award-list li {
+    .sidebar .social-icons {
       display: flex;
-      justify-content: space-between;
-      align-items: baseline;
+      justify-content: center;
       gap: 12px;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+    .sidebar .social-icons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      font-size: 18px;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .sidebar .social-icons a:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      .page-body { flex-direction: column; }
+      .sidebar {
+        width: 100%;
+        position: static;
+        text-align: center;
+        margin-bottom: 32px;
+      }
+      .sidebar .avatar { width: 140px; height: 140px; font-size: 48px; }
+    }
+
+    /* ===== Main Content ===== */
+    .main-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    /* ===== Section ===== */
+    .section {
+      margin-bottom: 48px;
+      padding-top: 8px;
+    }
+    .section-heading {
+      font-family: 'Lora', serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 20px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--primary);
+      display: inline-block;
+    }
+
+    /* ===== About ===== */
+    .about-text p { margin-bottom: 12px; font-size: 15px; color: var(--text-secondary); }
+    .about-text p:last-child { margin-bottom: 0; }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 20px;
+    }
+    .about-subheading {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .ul-interests, .ul-edu {
+      list-style: none;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+    .ul-interests li { padding: 4px 0; }
+    .ul-interests li::before { content: '▸ '; color: var(--primary); font-size: 11px; }
+    .ul-edu li { padding: 6px 0 10px; }
+    .ul-edu .course { font-weight: 500; color: var(--text); }
+    .ul-edu .institution { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+
+    @media (max-width: 640px) {
+      .about-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ===== Stats Row ===== */
+    .stats-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 20px 0;
+    }
+    .stat-badge {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 20px;
+      text-align: center;
+      min-width: 90px;
+      flex: 1;
+      box-shadow: var(--shadow);
+    }
+    .stat-badge .val {
+      font-family: 'Lora', serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .stat-badge .lbl {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* ===== News ===== */
+    .news-list { list-style: none; }
+    .news-item {
+      display: flex;
+      gap: 16px;
       padding: 10px 0;
       border-bottom: 1px solid var(--border);
       font-size: 14px;
     }
-    .award-list li:last-child { border-bottom: none; }
-    .award-name { color: var(--text); }
-    .award-meta {
-      color: var(--text-muted);
-      font-size: 13px;
+    .news-item:last-child { border-bottom: none; }
+    .news-date {
+      font-weight: 500;
+      color: var(--primary);
       white-space: nowrap;
-      text-align: right;
+      font-size: 13px;
+      min-width: 72px;
+    }
+    .news-text { color: var(--text-secondary); }
+
+    /* ===== Publications / Research Cards ===== */
+    .pub-list { list-style: none; }
+    .pub-item {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .pub-item:last-child { border-bottom: none; }
+    .pub-venue {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      background: var(--primary);
+      color: #fff;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-right: 8px;
+      vertical-align: 2px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .pub-venue.inprogress { background: #78909c; }
+    .pub-venue.journal { background: #00897b; }
+    .pub-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .pub-authors {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+    .pub-authors .me { font-weight: 600; color: var(--text); }
+    .pub-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 6px;
+      line-height: 1.65;
+    }
+    .pub-tags {
+      margin-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    .pub-tag {
+      font-size: 11px;
+      background: rgba(21,101,192,0.08);
+      color: var(--primary);
+      padding: 2px 8px;
+      border-radius: 12px;
     }
 
-    /* Footer */
-    footer {
+    /* ===== Awards ===== */
+    .award-list { list-style: none; }
+    .award-item {
+      display: flex;
+      gap: 16px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+      align-items: baseline;
+    }
+    .award-item:last-child { border-bottom: none; }
+    .award-date {
+      font-size: 12px;
+      color: var(--text-muted);
+      white-space: nowrap;
+      min-width: 64px;
+      font-style: italic;
+    }
+    .award-name { color: var(--text); }
+    .award-level {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      background: #f44336;
+      color: #fff;
+      padding: 1px 7px;
+      border-radius: 3px;
+      margin-left: 6px;
+      vertical-align: 2px;
+    }
+    .award-level.province {
+      background: #ff9800;
+    }
+
+    /* ===== Experience Timeline ===== */
+    .exp-item {
+      position: relative;
+      padding-left: 32px;
+      padding-bottom: 28px;
+    }
+    .exp-item:last-child { padding-bottom: 0; }
+    .exp-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 4px;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+    .exp-item:last-child::before { display: none; }
+    .exp-item::after {
+      content: '';
+      position: absolute;
+      left: -5px;
+      top: 10px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--primary);
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 0 2px var(--primary);
+    }
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .exp-title { font-size: 15px; font-weight: 600; color: var(--text); }
+    .exp-org { font-size: 14px; color: var(--primary); font-weight: 500; }
+    .exp-date { font-size: 13px; color: var(--text-muted); white-space: nowrap; }
+    .exp-desc { font-size: 14px; color: var(--text-secondary); margin-top: 6px; }
+    .exp-desc ul { margin: 4px 0 0 16px; }
+    .exp-desc li { margin-bottom: 3px; }
+
+    /* ===== Footer ===== */
+    .page-footer {
       text-align: center;
-      padding: 48px 24px;
+      padding: 32px 24px;
       color: var(--text-muted);
       font-size: 13px;
       border-top: 1px solid var(--border);
-      margin-top: 32px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
+    .page-footer p { margin-bottom: 4px; }
 
-    /* Responsive */
-    @media (max-width: 640px) {
-      .hero h1 { font-size: 32px; }
-      .hero { padding: 60px 20px 40px; }
-      .card-header { flex-direction: column; }
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    /* ===== Misc ===== */
+    .email-link {
+      font-family: 'SF Mono', 'Fira Code', 'Cutive Mono', monospace;
+      font-size: 14px;
+    }
+    .highlight-box {
+      background: rgba(21,101,192,0.05);
+      border-left: 4px solid var(--primary);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 16px 20px;
+      margin-top: 16px;
+      font-size: 14px;
+    }
+    .more-link {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 14px;
+      font-weight: 500;
     }
   </style>
 </head>
 <body>
 
-<!-- Hero -->
-<header class="hero">
-  <h1>王天予</h1>
-  <p class="tagline">苏州大学 软件工程 · 学无止境，勇攀高峰</p>
-  <div class="contact">
-    <span>tywangcs@foxmail.com</span>
-    <span>189-6361-1891</span>
-    <a href="https://github.com/RealClearwave" target="_blank">GitHub</a>
-    <span>江苏南京</span>
+<!-- ===== Navbar ===== -->
+<nav class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <a class="navbar-brand" href="/">王天予 · Tianyu Wang</a>
+    <button class="navbar-toggler" id="navbarToggler" aria-label="Menu">
+      <i class="fas fa-bars"></i>
+    </button>
+    <ul class="navbar-links" id="navbarLinks">
+      <li><a href="#about" class="active">Home</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#awards">Awards</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="/TianyuWang_CV.pdf">CV</a></li>
+    </ul>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <i class="fas fa-moon"></i>
+    </button>
   </div>
-</header>
+</nav>
 
-<div class="container">
+<!-- ===== Page Body ===== -->
+<div class="page-body">
 
-<!-- Education & Stats -->
-<section>
-  <h2 class="section-title">教育背景</h2>
-  <div class="stats-grid">
-    <div class="stat">
-      <div class="stat-value">3.83</div>
-      <div class="stat-label">课程绩点</div>
-    </div>
-    <div class="stat">
-      <div class="stat-value">9/135</div>
-      <div class="stat-label">专业排名 (6%)</div>
-    </div>
-    <div class="stat">
-      <div class="stat-value">659</div>
-      <div class="stat-label">CET-6</div>
-    </div>
-    <div class="stat">
-      <div class="stat-value">370</div>
-      <div class="stat-label">CCF CSP</div>
-    </div>
+<!-- ===== Sidebar ===== -->
+<aside class="sidebar">
+  <div class="avatar" role="img" aria-label="王天予">王</div>
+  <div class="name">王天予</div>
+  <div class="title-role">本科生</div>
+  <div class="affiliation">苏州大学 · 软件工程</div>
+  <div class="affiliation">计算机科学与技术学院</div>
+  <div class="social-icons">
+    <a href="https://github.com/RealClearwave" target="_blank" rel="noopener" aria-label="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+    <a href="https://scholar.google.com/citations?user=RealClearwave" target="_blank" rel="noopener" aria-label="Google Scholar">
+      <i class="ai ai-google-scholar"></i>
+    </a>
+    <a href="mailto:tywangcs@foxmail.com" aria-label="Email">
+      <i class="fas fa-envelope"></i>
+    </a>
+    <a href="https://dblp.org/" target="_blank" rel="noopener" aria-label="DBLP">
+      <i class="ai ai-dblp"></i>
+    </a>
+  </div>
+</aside>
+
+<!-- ===== Main Content ===== -->
+<main class="main-content">
+
+<!-- ===== About ===== -->
+<section id="about" class="section">
+  <h1 class="section-heading">Biography</h1>
+
+  <div class="about-text">
+    <p>王天予，苏州大学计算机科学与技术学院软件工程专业本科生（2023 年入学）。研究方向为多模态学习、组合图像检索（CIR）、大语言模型安全对齐。本科期间加入苏州大学 NLP 实验室与 Beelab 实验室，参与多项科研项目与学科竞赛，获国家级奖项 3 项、省级一等奖 1 项。</p>
+    <p><strong>Email</strong>: <span class="email-link">tywangcs [at] foxmail [dot] com</span></p>
   </div>
 
-  <div class="card" style="margin-top: 16px;">
-    <div class="card-header">
-      <div>
-        <div class="card-title">苏州大学 · 软件工程（本科）</div>
-        <div class="card-subtitle">计算机科学与技术学院</div>
-      </div>
-      <div class="card-date">2023 年 - 至今</div>
+  <div class="stats-row">
+    <div class="stat-badge"><div class="val">3.83</div><div class="lbl">课程绩点</div></div>
+    <div class="stat-badge"><div class="val">9/135</div><div class="lbl">专业排名 (前 6%)</div></div>
+    <div class="stat-badge"><div class="val">659</div><div class="lbl">CET-6</div></div>
+    <div class="stat-badge"><div class="val">370</div><div class="lbl">CCF CSP</div></div>
+    <div class="stat-badge"><div class="val">3/135</div><div class="lbl">综测排名 预计 (前 2%)</div></div>
+  </div>
+
+  <div class="about-grid">
+    <div>
+      <div class="about-subheading">Interests</div>
+      <ul class="ul-interests">
+        <li>Multi-modal Learning & CIR</li>
+        <li>Vision-Language Models</li>
+        <li>LLM Safety Alignment</li>
+        <li>Autonomous Driving Systems</li>
+        <li>Edge Computing</li>
+      </ul>
     </div>
-    <div class="card-body">
-      <p>211 工程、双一流建设高校。综合测评排名（预计）3/135（前 2%）。</p>
-      <p>本科早期即接触算法竞赛，多次参加 NOIP 等信息学竞赛，GitHub 活跃开发者。</p>
+    <div>
+      <div class="about-subheading">Education</div>
+      <ul class="ul-edu">
+        <li>
+          <div class="course">B.E. in Software Engineering, 2023 - Present</div>
+          <div class="institution">苏州大学（211, 双一流）· 计算机科学与技术学院</div>
+        </li>
+        <li>
+          <div class="course">NOIP & Algorithm Competitions, 2015 - 2023</div>
+          <div class="institution">中学阶段多次参加信息学奥林匹克竞赛</div>
+        </li>
+      </ul>
     </div>
   </div>
 </section>
 
-<!-- Honors -->
-<section>
-  <h2 class="section-title">荣誉奖项</h2>
+<!-- ===== News ===== -->
+<section id="news" class="section">
+  <h2 class="section-heading">News</h2>
+  <ul class="news-list">
+    <li class="news-item">
+      <span class="news-date">2026.05</span>
+      <span class="news-text">AutoConcept 论文投稿 <strong>PRICAI 2026</strong></span>
+    </li>
+    <li class="news-item">
+      <span class="news-date">2025.09</span>
+      <span class="news-text">加入苏州大学 NLP 实验室，开展多模态幽默生成系统研究</span>
+    </li>
+    <li class="news-item">
+      <span class="news-date">2025 夏</span>
+      <span class="news-text">在南京大学推理与学习 (R&L) 联合实验室完成暑期科研实习</span>
+    </li>
+    <li class="news-item">
+      <span class="news-date">2024.09</span>
+      <span class="news-text">获苏州大学学习优秀奖学金 <strong>特等奖</strong>、创新创业奖学金 <strong>特等奖</strong></span>
+    </li>
+    <li class="news-item">
+      <span class="news-date">2024.08</span>
+      <span class="news-text">第二十六届中国机器人及人工智能大赛获 <strong>国家级一等奖</strong></span>
+    </li>
+    <li class="news-item">
+      <span class="news-date">2024.04</span>
+      <span class="news-text">团体程序设计天梯赛获 <strong>国家级三等奖</strong>；蓝桥杯 C++ A 组获 <strong>省级一等奖</strong></span>
+    </li>
+    <li class="news-item">
+      <span class="news-date">2023.09</span>
+      <span class="news-text">进入苏州大学计算机科学与技术学院，就读软件工程专业</span>
+    </li>
+  </ul>
+</section>
+
+<!-- ===== Publications ===== -->
+<section id="publications" class="section">
+  <h2 class="section-heading">Selected Publications</h2>
+  <ul class="pub-list">
+
+    <li class="pub-item">
+      <span class="pub-venue">PRICAI 2026</span>
+      <div class="pub-title">AutoConcept: Controlled Preference-Aware Composed Image Retrieval via Concept Memory</div>
+      <div class="pub-authors"><span class="me">Tianyu Wang</span>, et al.</div>
+      <div class="pub-desc">提出显式概念记忆机制用于训练无关的组合图像检索重排序，在 FashionIQ 上显著提升 R@10 指标（WeiMoCIR 0.1125→0.1379，LinCIR 0.2605→0.3009），同时提供可解释的概念激活与自适应插值机制。</div>
+      <div class="pub-tags">
+        <span class="pub-tag">CIR</span><span class="pub-tag">Concept Memory</span><span class="pub-tag">Training-Free</span>
+      </div>
+    </li>
+
+    <li class="pub-item">
+      <span class="pub-venue inprogress">In Progress</span>
+      <div class="pub-title">VICER: VIsion-Concept Enhanced Retrieval</div>
+      <div class="pub-authors"><span class="me">Tianyu Wang</span>, et al.</div>
+      <div class="pub-desc">多模态零样本生成系统，通过反向概念匹配识别长尾/个性化概念，融合图像、文本与指令嵌入进行 CIR 多模态对齐，引入残差回传保留视觉细节。在自建长尾零样本数据集上优于基线方法。</div>
+      <div class="pub-tags">
+        <span class="pub-tag">MLLM</span><span class="pub-tag">Zero-Shot</span><span class="pub-tag">ViT</span><span class="pub-tag">Concept Matching</span>
+      </div>
+    </li>
+
+    <li class="pub-item">
+      <span class="pub-venue">Under Review</span>
+      <div class="pub-title">Critic-Guided Multi-Agent Text Detoxification for Fine-Grained Harm Reduction <small>[1]</small></div>
+      <div class="pub-authors"><span class="me">Tianyu Wang</span>, et al.</div>
+      <div class="pub-desc">多智能体文本降毒框架，通过多重 critic 闭环反馈排序优化生成。在 UCB 数据集上 MoAGAN R² 提升至 0.6848（基线 0.4987），Bilibili-Xiaoheiwu 检测准确率 0.7386，优于 prompt 或 RoBERTa。</div>
+      <div class="pub-tags">
+        <span class="pub-tag">LLM Agents</span><span class="pub-tag">Text Detox</span><span class="pub-tag">Content Safety</span>
+      </div>
+    </li>
+
+    <li class="pub-item">
+      <span class="pub-venue journal">省刊</span>
+      <div class="pub-title">在线评测系统中的边缘计算应用研究</div>
+      <div class="pub-authors"><span class="me">王天予</span>, et al.</div>
+      <div class="pub-desc">将边缘计算用于在线评测系统，通过客户端分布式评测、K-means 异常检测与代码交叉验证优化。并发超过 3 时分布式评测耗时优势明显，异常检测精确率 0.66、召回率 0.67。</div>
+      <div class="pub-tags">
+        <span class="pub-tag">Edge Computing</span><span class="pub-tag">OJ System</span>
+      </div>
+    </li>
+
+  </ul>
+</section>
+
+<!-- ===== Awards ===== -->
+<section id="awards" class="section">
+  <h2 class="section-heading">Honors &amp; Awards</h2>
+
+  <h3 style="font-size:16px;font-weight:600;margin-bottom:12px;color:var(--text);">学科竞赛</h3>
   <ul class="award-list">
-    <li>
+    <li class="award-item">
+      <span class="award-date">2024.08</span>
+      <span class="award-name">中国机器人及人工智能大赛<span class="award-level">国家级一等奖</span></span>
+    </li>
+    <li class="award-item">
+      <span class="award-date">2024.04</span>
+      <span class="award-name">团体程序设计天梯赛 (GPLT)<span class="award-level">国家级三等奖</span></span>
+    </li>
+    <li class="award-item">
+      <span class="award-date">2024.04</span>
+      <span class="award-name">蓝桥杯全国软件和信息技术专业人才大赛<span class="award-level">国家级优秀奖</span></span>
+    </li>
+    <li class="award-item">
+      <span class="award-date">2024.04</span>
+      <span class="award-name">蓝桥杯软件和信息技术专业人才大赛江苏赛区<span class="award-level province">省一等奖</span></span>
+    </li>
+  </ul>
+
+  <h3 style="font-size:16px;font-weight:600;margin:24px 0 12px;color:var(--text);">荣誉奖项</h3>
+  <ul class="award-list">
+    <li class="award-item">
+      <span class="award-date">2024-2025</span>
       <span class="award-name">苏州大学学习优秀奖学金 特等奖</span>
-      <span class="award-meta">2024-2025</span>
     </li>
-    <li>
+    <li class="award-item">
+      <span class="award-date">2023-2024</span>
       <span class="award-name">苏州大学创新创业奖学金 特等奖</span>
-      <span class="award-meta">2023-2024</span>
     </li>
-    <li>
+    <li class="award-item">
+      <span class="award-date">2023-2024</span>
       <span class="award-name">苏州大学学习优秀奖学金 一等奖</span>
-      <span class="award-meta">2023-2024</span>
     </li>
-    <li>
+    <li class="award-item">
+      <span class="award-date">2024-2025</span>
       <span class="award-name">苏州大学综合奖学金</span>
-      <span class="award-meta">2024-2025</span>
     </li>
-    <li>
-      <span class="award-name">苏州大学精神文明专项奖学金</span>
-      <span class="award-meta">2024-2025</span>
+    <li class="award-item">
+      <span class="award-date">2024-2025</span>
+      <span class="award-name">苏州大学专项奖学金 · 精神文明专项奖</span>
     </li>
-    <li>
+    <li class="award-item">
+      <span class="award-date">2024</span>
       <span class="award-name">苏州大学创新创业创意大赛 三等奖</span>
-      <span class="award-meta">2024</span>
     </li>
   </ul>
-</section>
 
-<!-- Competition -->
-<section>
-  <h2 class="section-title">学科竞赛</h2>
+  <h3 style="font-size:16px;font-weight:600;margin:24px 0 12px;color:var(--text);">技能证书</h3>
   <ul class="award-list">
-    <li>
-      <span class="award-name"><strong>国家级一等奖</strong> · 中国机器人及人工智能大赛</span>
-      <span class="award-meta">2024.08</span>
+    <li class="award-item">
+      <span class="award-date">2024.06</span>
+      <span class="award-name">CET-6: 659 分</span>
     </li>
-    <li>
-      <span class="award-name"><strong>国家级三等奖</strong> · 团体程序设计天梯赛 (GPLT)</span>
-      <span class="award-meta">2024.04</span>
-    </li>
-    <li>
-      <span class="award-name"><strong>国家级优秀奖</strong> · 蓝桥杯 C++ A 组</span>
-      <span class="award-meta">2024.04</span>
-    </li>
-    <li>
-      <span class="award-name">蓝桥杯软件和信息技术专业人才大赛 江苏省一等奖</span>
-      <span class="award-meta">2024.04</span>
+    <li class="award-item">
+      <span class="award-date">2024.06</span>
+      <span class="award-name">CCF CSP 认证: 370 分</span>
     </li>
   </ul>
 </section>
 
-<!-- Research -->
-<section>
-  <h2 class="section-title">科研经历</h2>
+<!-- ===== Experience ===== -->
+<section id="experience" class="section">
+  <h2 class="section-heading">Experience</h2>
 
-  <div class="research-grid">
-    <div class="card">
-      <div class="card-header">
-        <div class="card-title">AutoConcept</div>
-        <div class="card-date">PRICAI 2026 在投</div>
-      </div>
-      <div class="card-subtitle" style="margin-bottom:8px;">可控偏好感知组合图像检索</div>
-      <div class="card-body">
-        <p>提出显式概念记忆机制，将查询相关的概念证据构建为正负偏好概念库，通过视觉特征过滤与相关性门控实现 training-free 候选重排序。在 FashionIQ 上显著提升 R@10（WeiMoCIR 0.1125→0.1379, LinCIR 0.2605→0.3009），同时提供可解释的概念激活与自适应插值机制。</p>
-      </div>
-      <div class="tags">
-        <span class="tag">CIR</span><span class="tag">Concept Memory</span><span class="tag">Training-Free</span><span class="tag">FashionIQ</span>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header">
-        <div class="card-title">VICER</div>
-        <div class="card-date">进行中</div>
-      </div>
-      <div class="card-subtitle" style="margin-bottom:8px;">视觉-概念增强检索系统</div>
-      <div class="card-body">
-        <p>多模态零样本生成系统，通过反向概念匹配识别长尾/个性化概念，融合图像、文本与指令嵌入进行 CIR 多模态对齐，引入原图残差回传保留视觉细节。在自建长尾零样本数据集上显著优于传统方法。</p>
-      </div>
-      <div class="tags">
-        <span class="tag">MLLM</span><span class="tag">Zero-Shot</span><span class="tag">ViT</span><span class="tag">Concept Matching</span>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header">
-        <div class="card-title">Critic-Guided Multi-Agent Text Detox</div>
-        <div class="card-date">发表中</div>
-      </div>
-      <div class="card-subtitle" style="margin-bottom:8px;">多智能体文本有害缓和框架</div>
-      <div class="card-body">
-        <p>多智能体框架通过角色分工完成 toxic span 定位、语气降级、改写生成与语义校验，以多重 critic 闭环反馈排序优化生成。在 UCB 数据集上 MoAGAN R² 提升至 0.6848（基线 0.4987），Bilibili-Xiaoheiwu 检测准确率 0.7386。</p>
-      </div>
-      <div class="tags">
-        <span class="tag">LLM Agents</span><span class="tag">Text Detox</span><span class="tag">Multi-Agent</span><span class="tag">Content Safety</span>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header">
-        <div class="card-title">在线评测系统中的边缘计算应用</div>
-        <div class="card-date">省刊发表</div>
-      </div>
-      <div class="card-subtitle" style="margin-bottom:8px;">边缘计算 + OJ 评测架构优化</div>
-      <div class="card-body">
-        <p>将评测任务下放到客户端执行，结合 K-means 异常检测、代码交叉验证与基准测试时间限制。实验表明并发 >3 时分布式评测耗时优势明显，异常检测精确率 0.66 / 召回率 0.67，适合轻量化部署场景。</p>
-      </div>
-      <div class="tags">
-        <span class="tag">Edge Computing</span><span class="tag">OJ System</span><span class="tag">K-means</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Work Experience -->
-<section>
-  <h2 class="section-title">实践经历</h2>
-  <div class="timeline-item">
-    <div class="card-header">
+  <div class="exp-item">
+    <div class="exp-header">
       <div>
-        <div class="card-title">南京大学 推理与学习 (R&L) 联合实验室（万维艾斯）</div>
-        <div class="card-subtitle">科研实习</div>
+        <div class="exp-title">南京大学 推理与学习 (R&L) 联合实验室（万维艾斯）</div>
+        <div class="exp-org">科研实习</div>
       </div>
-      <div class="card-date">2025 年夏</div>
+      <div class="exp-date">2025 年夏</div>
     </div>
-    <div class="card-body">
-      <p>参与某研究所机器学习算法昇腾平台演示项目开发，负责模型复现与移植（Nvidia / Huawei Ascend 双平台）、数据集处理、LoRA 微调和用户界面开发。参与道路安全视觉检测系统数据标注平台开发。</p>
+    <div class="exp-desc">
+      <ul>
+        <li>参与某研究所 127 个机器学习算法集成演示平台开发，负责 Nvidia / Huawei Ascend 双平台模型复现与移植</li>
+        <li>开发基于 VLM 的图片数据自动标注平台，用于道路异物识别与预警系统</li>
+        <li>负责数据集处理、LoRA 微调和用户界面开发</li>
+      </ul>
     </div>
   </div>
 
-  <div class="timeline-item">
-    <div class="card-header">
+  <div class="exp-item">
+    <div class="exp-header">
       <div>
-        <div class="card-title">苏州大学 NLP 实验室</div>
-        <div class="card-subtitle">本科科研</div>
+        <div class="exp-title">苏州大学 NLP 实验室</div>
+        <div class="exp-org">本科科研</div>
       </div>
-      <div class="card-date">2025 年 - 至今</div>
+      <div class="exp-date">2025 年 - 至今</div>
     </div>
-    <div class="card-body">
-      <p>加入创新创业训练项目"面向多模态信息的幽默生成系统"，负责数据集收集、模型设计、实验处理与论文写作。</p>
+    <div class="exp-desc">
+      <ul>
+        <li>加入校级创新创业训练项目"面向多模态信息的幽默生成系统"（核心成员）</li>
+        <li>负责数据集收集、模型设计、实验处理与论文写作</li>
+      </ul>
     </div>
   </div>
 
-  <div class="timeline-item">
-    <div class="card-header">
+  <div class="exp-item">
+    <div class="exp-header">
       <div>
-        <div class="card-title">苏州大学 Beelab 实验室</div>
-        <div class="card-subtitle">本科科研</div>
+        <div class="exp-title">苏州大学 Beelab 实验室</div>
+        <div class="exp-org">本科科研</div>
       </div>
-      <div class="card-date">2024 年 - 至今</div>
+      <div class="exp-date">2024 年 - 至今</div>
     </div>
-    <div class="card-body">
-      <p>参与基于国产自动驾驶平台与芯片的智能车自动驾驶系统开发，基于 Apollo 智驾框架实现精准感知、路径规划与自主驾驶的无人货运小车方案。获苏州大学 2024 创新创业创意大赛三等奖。</p>
-      <div class="tags">
-        <span class="tag">Apollo</span><span class="tag">Autonomous Driving</span><span class="tag">Sensor Fusion</span><span class="tag">UNet</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Skills -->
-<section>
-  <h2 class="section-title">技能</h2>
-  <div style="display:flex;flex-wrap:wrap;gap:8px;">
-    <span class="tag" style="font-size:14px;padding:6px 16px;">Python</span>
-    <span class="tag" style="font-size:14px;padding:6px 16px;">C/C++</span>
-    <span class="tag" style="font-size:14px;padding:6px 16px;">PyTorch</span>
-    <span class="tag" style="font-size:14px;padding:6px 16px;">Deep Learning</span>
-    <span class="tag" style="font-size:14px;padding:6px 16px;">Computer Vision</span>
-    <span class="tag" style="font-size:14px;padding:6px 16px;">NLP</span>
-    <span class="tag" style="font-size:14px;padding:6px 16px;">Multi-modal AI</span>
-    <span class="tag" style="font-size:14px;padding:6px 16px;">LLM Fine-tuning</span>
-    <span class="tag" style="font-size:14px;padding:6px 16px;">LoRA</span>
-    <span class="tag" style="font-size:14px;padding:6px 16px;">Apollo</span>
-    <span class="tag" style="font-size:14px;padding:6px 16px;">Git</span>
-    <span class="tag" style="font-size:14px;padding:6px 16px;">Linux</span>
-  </div>
-</section>
-
-<!-- Future Plan -->
-<section>
-  <h2 class="section-title">硕士阶段规划</h2>
-  <div class="card">
-    <div class="card-body">
-      <p><strong>潜心研究，甘坐冷板凳</strong> — 入学后专注科研，耐心打磨基础技能，深入阅读前沿文献，勇于承担基础性工作，积累经验，夯实学术根基。</p>
-      <p style="margin-top: 12px;"><strong>继往开来，发挥优势</strong> — 充分利用本科科研与竞赛经验，深耕多模态、视觉语言与智能系统方向，争取高水平科研成果，培养独立创新能力。</p>
-      <p style="margin-top: 12px;"><strong>积极实践，产学研结合</strong> — 积极参与校内外项目与实习，将理论与实践结合，提升工程能力，增强产学研综合素养。</p>
+    <div class="exp-desc">
+      <ul>
+        <li>参与基于国产自动驾驶平台与芯片的智能车自动驾驶系统开发（Apollo 智驾框架）</li>
+        <li>负责电气调试与 UNet 车道线识别数据标注</li>
+        <li>获苏州大学 2024 创新创业创意大赛三等奖</li>
+      </ul>
     </div>
   </div>
 </section>
 
+</main>
 </div>
 
-<footer>
-  <p>&copy; 2026 王天予 · Powered by GitHub Pages · realclearwave.github.io</p>
+<!-- ===== Footer ===== -->
+<footer class="page-footer">
+  <p>&copy; 2026 王天予 · Tianyu Wang</p>
+  <p>Powered by GitHub Pages · <a href="https://github.com/RealClearwave/realclearwave.github.io">Source</a></p>
 </footer>
+
+<!-- ===== Scripts ===== -->
+<script>
+  // Theme toggle
+  const themeToggle = document.getElementById('themeToggle');
+  const icon = themeToggle.querySelector('i');
+
+  function getTheme() {
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark' || saved === 'light') return saved;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  function applyTheme(theme) {
+    if (theme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      icon.className = 'fas fa-sun';
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      icon.className = 'fas fa-moon';
+    }
+  }
+
+  const currentTheme = getTheme();
+  applyTheme(currentTheme);
+
+  themeToggle.addEventListener('click', () => {
+    const next = document.documentElement.hasAttribute('data-theme') ? 'light' : 'dark';
+    localStorage.setItem('theme', next);
+    applyTheme(next);
+  });
+
+  // Mobile nav toggle
+  const toggler = document.getElementById('navbarToggler');
+  const navLinks = document.getElementById('navbarLinks');
+  toggler.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+
+  // Scroll spy
+  const sections = document.querySelectorAll('section[id]');
+  const navAs = document.querySelectorAll('.navbar-links a[href^="#"]');
+
+  function updateActive() {
+    let current = '';
+    sections.forEach(s => {
+      const top = s.getBoundingClientRect().top;
+      if (top <= 100) current = s.id;
+    });
+    navAs.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  }
+  window.addEventListener('scroll', updateActive, { passive: true });
+
+  // Close mobile nav on link click
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+</script>
 
 </body>
 </html>
