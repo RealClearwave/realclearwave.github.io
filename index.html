@@ -528,11 +528,7 @@
       <li><a href="#skills">Skills</a></li>
       <li><a href="#publications">Publications</a></li>
       <li><a href="#awards">Awards</a></li>
-      <li><a href="/TianyuWang_CV.pdf">CV</a></li>
     </ul>
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-      <i class="fas fa-moon"></i>
-    </button>
   </div>
 </nav>
 
@@ -556,8 +552,8 @@
     <a href="mailto:tywangcs@foxmail.com" aria-label="Email">
       <i class="fas fa-envelope"></i>
     </a>
-    <a href="https://dblp.org/" target="_blank" rel="noopener" aria-label="DBLP">
-      <i class="ai ai-dblp"></i>
+    <a href="#" aria-label="QQ: 2140172894" title="QQ: 2140172894">
+      <i class="fab fa-qq"></i>
     </a>
   </div>
 </aside>
@@ -586,11 +582,9 @@
     <div>
       <div class="about-subheading">Interests</div>
       <ul class="ul-interests">
-        <li>Multi-modal Learning & CIR</li>
-        <li>Vision-Language Models</li>
-        <li>LLM Safety Alignment</li>
-        <li>Autonomous Driving Systems</li>
-        <li>Edge Computing</li>
+        <li>Multi-modal Learning &amp; CIR</li>
+        <li>Affective Computing</li>
+        <li>LLM Agents</li>
       </ul>
     </div>
     <div>
@@ -601,8 +595,8 @@
           <div class="institution">苏州大学（211, 双一流）· 计算机科学与技术学院</div>
         </li>
         <li>
-          <div class="course">NOIP & Algorithm Competitions, 2015 - 2023</div>
-          <div class="institution">中学阶段多次参加信息学奥林匹克竞赛</div>
+          <div class="course">Nanjing Foreign Language School, 2017 - 2023</div>
+          <div class="institution">南京外国语学校</div>
         </li>
       </ul>
     </div>
@@ -811,34 +805,20 @@
 
 <!-- ===== Scripts ===== -->
 <script>
-  // Theme toggle
-  const themeToggle = document.getElementById('themeToggle');
-  const icon = themeToggle.querySelector('i');
-
-  function getTheme() {
-    const saved = localStorage.getItem('theme');
-    if (saved === 'dark' || saved === 'light') return saved;
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  }
-
-  function applyTheme(theme) {
-    if (theme === 'dark') {
+  // Auto dark mode based on system preference
+  (function() {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    if (prefersDark.matches) {
       document.documentElement.setAttribute('data-theme', 'dark');
-      icon.className = 'fas fa-sun';
-    } else {
-      document.documentElement.removeAttribute('data-theme');
-      icon.className = 'fas fa-moon';
     }
-  }
-
-  const currentTheme = getTheme();
-  applyTheme(currentTheme);
-
-  themeToggle.addEventListener('click', () => {
-    const next = document.documentElement.hasAttribute('data-theme') ? 'light' : 'dark';
-    localStorage.setItem('theme', next);
-    applyTheme(next);
-  });
+    prefersDark.addEventListener('change', e => {
+      if (e.matches) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+      }
+    });
+  })();
 
   // Mobile nav toggle
   const toggler = document.getElementById('navbarToggler');
