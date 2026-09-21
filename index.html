@@ -473,6 +473,38 @@
     .exp-desc ul { margin: 4px 0 0 16px; }
     .exp-desc li { margin-bottom: 3px; }
 
+    /* ===== Project Pipeline Figures ===== */
+    .pipeline-figure {
+      width: 90%;
+      margin: 14px auto 4px;
+    }
+    .pipeline-figure a {
+      display: block;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+    .pipeline-figure a:hover {
+      box-shadow: var(--shadow-hover);
+      text-decoration: none;
+    }
+    .pipeline-figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .pipeline-figure figcaption {
+      margin-top: 6px;
+      color: var(--text-muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+    @media (max-width: 768px) {
+      .pipeline-figure { width: 100%; }
+    }
+
     /* ===== Footer ===== */
     .page-footer {
       text-align: center;
@@ -593,6 +625,12 @@
         <li>负责 <strong>4B / 32B 多卡训练、实验复现与结果分析</strong>，在 <strong>8×A100 / 16×PPU</strong> 环境完成训练与 benchmark evaluation；围绕 <strong>SFT / RL / output distillation / attention distillation</strong> 开展 controlled ablation，拆解各阶段对模型性能的增益。</li>
         <li>负责 <strong>UIDR-Bench</strong> 数据清洗、评测集整理与模型评测；项目将 4B 模型在 UIDR-Bench 上由 <strong>50.1% 提升至 83.5%（+33.4 pp）</strong>，超过 untuned 32B 的 <strong>80.2%</strong>；attention distillation 在 output-only 基础上进一步贡献 <strong>+2.7 pp</strong>，并在 <strong>OSWorld-G / UI-Vision</strong> 上达到 <strong>58.5% / 26.7%</strong>。</li>
       </ul>
+      <figure class="pipeline-figure">
+        <a href="assets/images/pipelines/ui-ra-pipeline.png" target="_blank" rel="noopener" aria-label="查看 UI-RA 完整流程图">
+          <img src="assets/images/pipelines/ui-ra-pipeline.png" alt="UI-RA 三阶段训练流程：监督微调初始化、教师强化学习与在策略学生训练" loading="lazy" decoding="async">
+        </a>
+        <figcaption>UI-RA：从 SFT 初始化、teacher RL 到 output 与 attention distillation 的三阶段训练流程。</figcaption>
+      </figure>
     </div>
   </div>
 
@@ -621,12 +659,24 @@
       <span class="pub-venue">PRICAI 2026</span>
       <div class="pub-title">AutoConcept: Training-Free Concept-Guided Reranking for Metadata-Available CIR</div>
       <div class="pub-desc">提出面向组合图像检索（CIR）的 <strong>training-free concept-guided reranking</strong> 方法，构建显式正负偏好 concept memory，通过视觉特征过滤、相关性门控与自适应插值实现偏好感知重排序；论文获 <strong>PRICAI 2026（CCF-C）一作接收</strong>。<a href="https://arxiv.org/abs/2609.01456" target="_blank" rel="noopener">arXiv:2609.01456</a>。</div>
+      <figure class="pipeline-figure">
+        <a href="assets/images/pipelines/autoconcept-pipeline.png" target="_blank" rel="noopener" aria-label="查看 AutoConcept 完整流程图">
+          <img src="assets/images/pipelines/autoconcept-pipeline.png" alt="AutoConcept 组合图像检索与概念记忆重排序流程" loading="lazy" decoding="async">
+        </a>
+        <figcaption>AutoConcept：从组合查询检索、metadata concept memory 到自适应融合重排序的完整流程。</figcaption>
+      </figure>
       <a class="more-link" href="assets/papers/autoconcept-pricai-2026.pdf" target="_blank"><i class="fas fa-file-pdf"></i> 阅读 AutoConcept 论文</a>
     </li>
     <li class="pub-item">
       <span class="pub-venue inprogress">2025</span>
       <div class="pub-title">AMEND: Agentic Multi-critic Editing for Non-toxic Discourse</div>
       <div class="pub-desc">设计面向文本安全对齐的 <strong>multi-agent / multi-critic</strong> 降毒框架，通过 toxicity、semantic preservation、fluency、safety 等 critic 对候选响应进行闭环反馈与 reranking，在降低有害表达的同时约束语义保持与生成质量。</div>
+      <figure class="pipeline-figure">
+        <a href="assets/images/pipelines/amend-pipeline.png" target="_blank" rel="noopener" aria-label="查看 AMEND 完整流程图">
+          <img src="assets/images/pipelines/amend-pipeline.png" alt="AMEND 多智能体候选生成、隔离批评、约束选择与定向修复流程" loading="lazy" decoding="async">
+        </a>
+        <figcaption>AMEND：角色化候选生成、隔离 critics、硬约束选择与 residual-span 定向修复流程。</figcaption>
+      </figure>
       <a class="more-link" href="assets/papers/amend-acl-report.pdf" target="_blank"><i class="fas fa-file-pdf"></i> 阅读 AMEND ACL 技术报告</a>
     </li>
   </ul>
