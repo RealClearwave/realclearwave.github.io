@@ -589,9 +589,9 @@
     </div>
     <div class="exp-desc">
       <ul>
-        <li>参与多模态大模型后训练项目，负责基于 <strong>verl</strong> 的训练与实验链路，开展 <strong>SFT、GRPO 与 on-policy distillation</strong> 等后训练工作。</li>
-        <li>负责多卡训练、实验复现与结果分析，完成训练、benchmark evaluation 与 controlled ablation，拆解各阶段对模型性能的增益。</li>
-        <li>负责相关数据清洗、评测集整理与模型评测。</li>
+        <li>参与多模态 UI reasoning 项目 <strong>UI-RA（UI Reasoning Alignment）</strong>，负责基于 <strong>verl</strong> 的后训练与实验链路，在 <strong>Qwen3-VL-32B teacher / 4B student</strong> 上开展 <strong>grounding-aware SFT、GRPO 与 on-policy distillation</strong>；结合 <strong>reverse-KL output distillation</strong> 与 <strong>JSD attention distillation</strong>，在 student-sampled trajectories 上进行输出行为与 causal attention 对齐。</li>
+        <li>负责 <strong>4B / 32B 多卡训练、实验复现与结果分析</strong>，在 <strong>8×A100 / 16×PPU</strong> 环境完成训练与 benchmark evaluation；围绕 <strong>SFT / RL / output distillation / attention distillation</strong> 开展 controlled ablation，拆解各阶段对模型性能的增益。</li>
+        <li>负责 <strong>UIDR-Bench</strong> 数据清洗、评测集整理与模型评测；项目将 4B 模型在 UIDR-Bench 上由 <strong>50.1% 提升至 83.5%（+33.4 pp）</strong>，超过 untuned 32B 的 <strong>80.2%</strong>；attention distillation 在 output-only 基础上进一步贡献 <strong>+2.7 pp</strong>，并在 <strong>OSWorld-G / UI-Vision</strong> 上达到 <strong>58.5% / 26.7%</strong>。</li>
       </ul>
     </div>
   </div>
