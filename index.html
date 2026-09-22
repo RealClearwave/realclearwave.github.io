@@ -1,838 +1,211 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="王天予 · Tianyu Wang">
-  <meta name="description" content="王天予 · 多模态大模型后训练 · 强化学习 · 算法工程">
-  <meta name="theme-color" content="#1565c0">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231565c0'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-size='34' font-family='sans-serif' font-weight='700' fill='white'%3ETW%3C/text%3E%3C/svg%3E">
-
-  <title>王天予 · Tianyu Wang</title>
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap"></noscript>
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
-  <!-- Academicons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.4/css/academicons.min.css">
-
+  <meta name="description" content="王天予的学术与求职主页：多模态大模型后训练、强化学习与组合图像检索。">
+  <meta name="theme-color" content="#ffffff">
+  <title>Tianyu Wang (王天予) - Homepage</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%233e4b5d'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-size='29' font-family='sans-serif' font-weight='700' fill='white'%3ETW%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&amp;family=Noto+Sans+SC:wght@400;500;700&amp;display=swap" rel="stylesheet">
   <style>
-    /* ===== Variables ===== */
-    :root {
-      --primary: #1565c0;
-      --primary-light: #1e88e5;
-      --primary-dark: #0d47a1;
-      --bg: #fafafa;
-      --bg-card: #ffffff;
-      --text: #212121;
-      --text-secondary: #616161;
-      --text-muted: #9e9e9e;
-      --border: #e0e0e0;
-      --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
-      --shadow-hover: 0 4px 12px rgba(0,0,0,0.1), 0 2px 4px rgba(0,0,0,0.06);
-      --nav-height: 56px;
-      --sidebar-width: 280px;
-      --radius: 8px;
+    :root { color-scheme: light; --ink: #3e4147; --muted: #60656c; --line: #e8eaed; --link: #304c6b; }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+    body { margin: 0; background: #fff; color: var(--ink); font: 16px/1.62 Lato, "Noto Sans SC", Arial, sans-serif; }
+    a { color: var(--link); text-decoration: underline; text-underline-offset: 2px; }
+    a:hover { color: #162d49; }
+    a:focus-visible { outline: 2px solid #315f91; outline-offset: 3px; }
+    .top-nav { position: sticky; top: 0; z-index: 10; background: #fff; border-bottom: 1px solid var(--line); }
+    .nav-inner { max-width: 1440px; margin: auto; display: flex; align-items: center; gap: 0; padding: 0 18px; overflow-x: auto; white-space: nowrap; scrollbar-width: thin; }
+    .nav-inner a { display: block; padding: 14px 15px; color: #565c64; font-size: 14px; text-decoration: none; }
+    .nav-inner a:first-child { padding-left: 0; font-weight: 700; }
+    .nav-inner a:hover, .nav-inner a:focus-visible { color: #182f4e; }
+    .layout { max-width: 1440px; margin: 0 auto; padding: 34px 22px 56px; display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 42px; }
+    .profile { min-width: 0; }
+    .avatar { display: block; width: 174px; height: 174px; object-fit: cover; border-radius: 50%; border: 1px solid #eee; padding: 4px; background: #fff; }
+    .profile h1 { margin: 12px 0 0; font-size: 23px; line-height: 1.25; font-weight: 900; }
+    .chinese-name { margin: 6px 0 16px; font-size: 16px; }
+    .profile-detail { margin: 0 0 11px; color: var(--muted); line-height: 1.48; }
+    .profile-links { display: grid; gap: 5px; margin-top: 18px; }
+    .profile-links a { color: var(--ink); text-decoration: none; width: fit-content; }
+    .profile-links a:hover { text-decoration: underline; }
+    .profile-links span { display: inline-block; width: 20px; color: var(--muted); }
+    main { min-width: 0; }
+    .intro { margin: 0 0 26px; }
+    .intro p { margin: 0 0 10px; }
+    section { margin: 28px 0 0; scroll-margin-top: 5rem; }
+    section h2 { margin: 0 0 13px; padding-bottom: 7px; border-bottom: 1px solid var(--line); font-size: 21px; line-height: 1.4; font-weight: 900; }
+    .plain-list { margin: 0; padding-left: 29px; }
+    .plain-list li { padding-left: 3px; margin: 4px 0; }
+    .plain-list li::marker { color: #535b64; }
+    .news-date { font-style: italic; font-weight: 700; white-space: nowrap; }
+    .paper { display: grid; grid-template-columns: minmax(230px, 39%) minmax(0, 1fr); gap: 28px; align-items: center; padding: 17px 0 23px; border-bottom: 1px solid var(--line); }
+    .paper:last-child { border-bottom: 0; }
+    .paper-image { position: relative; display: block; min-width: 0; color: inherit; }
+    .paper-image img { display: block; width: 100%; height: 190px; object-fit: contain; background: #fff; border: 1px solid #ebebeb; box-shadow: 0 2px 7px rgba(0,0,0,.13); }
+    .paper-badge { position: absolute; top: 0; left: 0; padding: 2px 10px; color: #fff; background: #315a9a; font-size: 12px; line-height: 1.45; }
+    .paper-badge.report { background: #667686; }
+    .paper-body { min-width: 0; }
+    .citation { margin: 0 0 8px; font-size: 17px; line-height: 1.43; }
+    .citation strong { font-weight: 900; }
+    .paper-summary { margin: 0 0 7px; color: var(--muted); font-size: 15px; }
+    .paper-links { margin: 0; font-size: 15px; }
+    .paper-links a { margin-right: 9px; }
+    .entry-list > li { margin: 8px 0; }
+    .entry-list .entry-date { font-style: italic; font-weight: 700; white-space: nowrap; }
+    .internship { margin: 17px 0 24px; }
+    .internship h3 { margin: 0 0 4px; font-size: 17px; font-weight: 700; }
+    .internship .entry-date { color: var(--muted); font-size: 14px; font-weight: 400; }
+    .internship ul { margin: 5px 0 0; padding-left: 23px; }
+    .internship li { margin: 5px 0; }
+    .skills li { margin: 6px 0; }
+    footer { max-width: 1440px; margin: 0 auto; padding: 17px 22px 27px; border-top: 1px solid var(--line); color: #747980; font-size: 13px; }
+    footer a { color: inherit; }
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; gap: 22px; padding: 25px 22px 45px; }
+      .profile { display: grid; grid-template-columns: 145px minmax(0, 1fr); column-gap: 22px; align-items: start; }
+      .avatar { grid-row: 1 / 6; width: 145px; height: 145px; }
+      .profile h1 { margin-top: 0; }
+      .profile-links { display: flex; flex-wrap: wrap; gap: 7px 18px; margin-top: 3px; }
     }
-
-    [data-theme="dark"] {
-      --primary: #42a5f5;
-      --primary-light: #64b5f6;
-      --primary-dark: #1976d2;
-      --bg: #121212;
-      --bg-card: #1e1e1e;
-      --text: #e0e0e0;
-      --text-secondary: #b0b0b0;
-      --text-muted: #808080;
-      --border: #333333;
-      --shadow: 0 1px 3px rgba(0,0,0,0.3);
-      --shadow-hover: 0 4px 12px rgba(0,0,0,0.4);
+    @media (max-width: 620px) {
+      body { font-size: 15px; }
+      .nav-inner { padding: 0 14px; }
+      .nav-inner a { padding: 12px 11px; }
+      .layout { padding: 22px 16px 40px; }
+      .profile { grid-template-columns: 108px minmax(0, 1fr); column-gap: 15px; }
+      .avatar { width: 108px; height: 108px; }
+      .profile h1 { font-size: 20px; }
+      .chinese-name { margin: 3px 0 8px; }
+      .profile-detail { margin-bottom: 5px; font-size: 14px; }
+      .profile-links { grid-column: 1 / -1; margin-top: 14px; font-size: 14px; }
+      .paper { grid-template-columns: 1fr; gap: 12px; }
+      .paper-image img { height: auto; aspect-ratio: 2.05 / 1; max-height: 260px; }
+      section h2 { font-size: 19px; }
+      .citation { font-size: 16px; }
     }
-
-    /* ===== Reset ===== */
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-height) + 16px); }
-
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.75;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    h1, h2, h3, h4 { font-family: 'Lora', 'Noto Serif SC', serif; }
-
-    a { color: var(--primary); text-decoration: none; transition: color 0.2s; }
-    a:hover { color: var(--primary-dark); text-decoration: underline; }
-
-    /* ===== Top Navbar ===== */
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: var(--nav-height);
-      background: var(--bg-card);
-      border-bottom: 1px solid var(--border);
-      box-shadow: var(--shadow);
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-    }
-    .navbar-inner {
-      max-width: 1200px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 0 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .navbar-brand {
-      font-family: 'Lora', serif;
-      font-size: 17px;
-      font-weight: 600;
-      color: var(--text);
-      white-space: nowrap;
-    }
-    .navbar-brand:hover { color: var(--primary); text-decoration: none; }
-    .navbar-links {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      list-style: none;
-    }
-    .navbar-links a {
-      display: block;
-      padding: 6px 12px;
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text-secondary);
-      border-radius: 6px;
-      transition: background 0.2s, color 0.2s;
-    }
-    .navbar-links a:hover,
-    .navbar-links a.active {
-      color: var(--primary);
-      background: rgba(21,101,192,0.08);
-      text-decoration: none;
-    }
-    .navbar-toggler {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 20px;
-      color: var(--text-secondary);
-      cursor: pointer;
-      padding: 4px 8px;
-    }
-    .theme-toggle {
-      background: none;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 6px 10px;
-      font-size: 15px;
-      cursor: pointer;
-      color: var(--text-secondary);
-      margin-left: 8px;
-      transition: background 0.2s;
-    }
-    .theme-toggle:hover { background: rgba(21,101,192,0.08); }
-
-    @media (max-width: 768px) {
-      .navbar-links { display: none; }
-      .navbar-toggler { display: block; }
-      .navbar-links.open {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: var(--nav-height);
-        left: 0; right: 0;
-        background: var(--bg-card);
-        border-bottom: 1px solid var(--border);
-        box-shadow: var(--shadow);
-        padding: 8px;
-      }
-    }
-
-    /* ===== Page Layout ===== */
-    .page-body {
-      display: flex;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: calc(var(--nav-height) + 32px) 24px 48px;
-      gap: 40px;
-    }
-
-    /* ===== Left Sidebar ===== */
-    .sidebar {
-      width: var(--sidebar-width);
-      flex-shrink: 0;
-      position: sticky;
-      top: calc(var(--nav-height) + 24px);
-      align-self: flex-start;
-      text-align: center;
-    }
-    .sidebar .avatar {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: var(--shadow);
-      margin: 0 auto 20px;
-      display: block;
-    }
-    .sidebar .name {
-      font-family: 'Lora', serif;
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--text);
-    }
-    .sidebar .title-role {
-      font-size: 14px;
-      color: var(--text-secondary);
-      margin-top: 4px;
-    }
-    .sidebar .affiliation {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-top: 2px;
-    }
-    .sidebar .social-icons {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin-top: 18px;
-      flex-wrap: wrap;
-    }
-    .sidebar .social-icons a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      color: var(--text-secondary);
-      font-size: 18px;
-      transition: background 0.2s, color 0.2s, border-color 0.2s;
-    }
-    .sidebar .social-icons a:hover {
-      background: var(--primary);
-      border-color: var(--primary);
-      color: #fff;
-      text-decoration: none;
-    }
-
-    @media (max-width: 768px) {
-      .page-body { flex-direction: column; }
-      .sidebar {
-        width: 100%;
-        position: static;
-        text-align: center;
-        margin-bottom: 32px;
-      }
-      .sidebar .avatar { width: 140px; height: 140px; font-size: 48px; }
-    }
-
-    /* ===== Main Content ===== */
-    .main-content {
-      flex: 1;
-      min-width: 0;
-    }
-
-    /* ===== Section ===== */
-    .section {
-      margin-bottom: 48px;
-      padding-top: 8px;
-    }
-    .section-heading {
-      font-family: 'Lora', serif;
-      font-size: 26px;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 20px;
-      padding-bottom: 8px;
-      border-bottom: 2px solid var(--primary);
-      display: inline-block;
-    }
-
-    /* ===== About ===== */
-    .about-text p { margin-bottom: 12px; font-size: 15px; color: var(--text-secondary); }
-    .about-text p:last-child { margin-bottom: 0; }
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      margin-top: 20px;
-    }
-    .about-subheading {
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 10px;
-    }
-    .ul-interests, .ul-edu {
-      list-style: none;
-      font-size: 14px;
-      color: var(--text-secondary);
-    }
-    .ul-interests li { padding: 4px 0; }
-    .ul-interests li::before { content: '▸ '; color: var(--primary); font-size: 11px; }
-    .ul-edu li { padding: 6px 0 10px; }
-    .ul-edu .course { font-weight: 500; color: var(--text); }
-    .ul-edu .institution { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
-
-    @media (max-width: 640px) {
-      .about-grid { grid-template-columns: 1fr; }
-    }
-
-    /* ===== Stats Row ===== */
-    .stats-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin: 20px 0;
-    }
-    .stat-badge {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 14px 20px;
-      text-align: center;
-      min-width: 90px;
-      flex: 1;
-      box-shadow: var(--shadow);
-    }
-    .stat-badge .val {
-      font-family: 'Lora', serif;
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--primary);
-    }
-    .stat-badge .lbl {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-top: 2px;
-    }
-
-    /* ===== News ===== */
-    .news-list { list-style: none; }
-    .news-item {
-      display: flex;
-      gap: 16px;
-      padding: 10px 0;
-      border-bottom: 1px solid var(--border);
-      font-size: 14px;
-    }
-    .news-item:last-child { border-bottom: none; }
-    .news-date {
-      font-weight: 500;
-      color: var(--primary);
-      white-space: nowrap;
-      font-size: 13px;
-      min-width: 72px;
-    }
-    .news-text { color: var(--text-secondary); }
-
-    /* ===== Publications / Research Cards ===== */
-    .pub-list { list-style: none; }
-    .pub-item {
-      padding: 16px 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .pub-item:last-child { border-bottom: none; }
-    .pub-venue {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 600;
-      background: var(--primary);
-      color: #fff;
-      padding: 2px 8px;
-      border-radius: 4px;
-      margin-right: 8px;
-      vertical-align: 2px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    .pub-venue.inprogress { background: #78909c; }
-    .pub-venue.journal { background: #00897b; }
-    .pub-title {
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--text);
-    }
-    .pub-authors {
-      font-size: 13px;
-      color: var(--text-secondary);
-      margin-top: 4px;
-    }
-    .pub-authors .me { font-weight: 600; color: var(--text); }
-    .pub-desc {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-top: 6px;
-      line-height: 1.65;
-    }
-    .pub-tags {
-      margin-top: 8px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px;
-    }
-    .pub-tag {
-      font-size: 11px;
-      background: rgba(21,101,192,0.08);
-      color: var(--primary);
-      padding: 2px 8px;
-      border-radius: 12px;
-    }
-
-    /* ===== Awards ===== */
-    .award-list { list-style: none; }
-    .award-item {
-      display: flex;
-      gap: 16px;
-      padding: 10px 0;
-      border-bottom: 1px solid var(--border);
-      font-size: 14px;
-      align-items: baseline;
-    }
-    .award-item:last-child { border-bottom: none; }
-    .award-date {
-      font-size: 12px;
-      color: var(--text-muted);
-      white-space: nowrap;
-      min-width: 64px;
-      font-style: italic;
-    }
-    .award-name { color: var(--text); }
-    .award-level {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 600;
-      background: #f44336;
-      color: #fff;
-      padding: 1px 7px;
-      border-radius: 3px;
-      margin-left: 6px;
-      vertical-align: 2px;
-    }
-    .award-level.province {
-      background: #ff9800;
-    }
-
-    /* ===== Experience Timeline ===== */
-    .exp-item {
-      position: relative;
-      padding-left: 32px;
-      padding-bottom: 28px;
-    }
-    .exp-item:last-child { padding-bottom: 0; }
-    .exp-item::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 4px;
-      bottom: 0;
-      width: 2px;
-      background: var(--border);
-    }
-    .exp-item:last-child::before { display: none; }
-    .exp-item::after {
-      content: '';
-      position: absolute;
-      left: -5px;
-      top: 10px;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--primary);
-      border: 2px solid var(--bg);
-      box-shadow: 0 0 0 2px var(--primary);
-    }
-    .exp-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .exp-title { font-size: 15px; font-weight: 600; color: var(--text); }
-    .exp-org { font-size: 14px; color: var(--primary); font-weight: 500; }
-    .exp-date { font-size: 13px; color: var(--text-muted); white-space: nowrap; }
-    .exp-desc { font-size: 14px; color: var(--text-secondary); margin-top: 6px; }
-    .exp-desc ul { margin: 4px 0 0 16px; }
-    .exp-desc li { margin-bottom: 3px; }
-
-    /* ===== Project Pipeline Figures ===== */
-    .pipeline-figure {
-      width: 90%;
-      margin: 14px auto 4px;
-    }
-    .pipeline-figure a {
-      display: block;
-      border-radius: var(--radius);
-      overflow: hidden;
-      border: 1px solid var(--border);
-      background: #fff;
-      box-shadow: var(--shadow);
-    }
-    .pipeline-figure a:hover {
-      box-shadow: var(--shadow-hover);
-      text-decoration: none;
-    }
-    .pipeline-figure img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-    .pipeline-figure figcaption {
-      margin-top: 6px;
-      color: var(--text-muted);
-      font-size: 12px;
-      line-height: 1.5;
-    }
-    @media (max-width: 768px) {
-      .pipeline-figure { width: 100%; }
-    }
-
-    /* ===== Footer ===== */
-    .page-footer {
-      text-align: center;
-      padding: 32px 24px;
-      color: var(--text-muted);
-      font-size: 13px;
-      border-top: 1px solid var(--border);
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .page-footer p { margin-bottom: 4px; }
-
-    /* ===== Misc ===== */
-    .email-link {
-      font-family: 'SF Mono', 'Fira Code', 'Cutive Mono', monospace;
-      font-size: 14px;
-    }
-    .highlight-box {
-      background: rgba(21,101,192,0.05);
-      border-left: 4px solid var(--primary);
-      border-radius: 0 var(--radius) var(--radius) 0;
-      padding: 16px 20px;
-      margin-top: 16px;
-      font-size: 14px;
-    }
-    .more-link {
-      display: inline-block;
-      margin-top: 12px;
-      font-size: 14px;
-      font-weight: 500;
-    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   </style>
 </head>
 <body>
-
-<!-- ===== Navbar ===== -->
-<nav class="navbar" id="navbar">
-  <div class="navbar-inner">
-    <a class="navbar-brand" href="/">王天予 · Tianyu Wang</a>
-    <button class="navbar-toggler" id="navbarToggler" aria-label="Menu">
-      <i class="fas fa-bars"></i>
-    </button>
-    <ul class="navbar-links" id="navbarLinks">
-      <li><a href="#about" class="active">Education</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#skills">Skills</a></li>
-    </ul>
-  </div>
-</nav>
-
-<!-- ===== Page Body ===== -->
-<div class="page-body">
-
-<!-- ===== Sidebar ===== -->
-<aside class="sidebar">
-  <img class="avatar" src="assets/images/avatar.jpg" alt="王天予">
-  <div class="name">王天予</div>
-  <div class="title-role">多模态大模型后训练 / 强化学习 / 算法工程</div>
-  <div class="affiliation">苏州大学 · 软件工程 · GPA 前 6%</div>
-  <div class="affiliation">2027 届 · 寻求实习机会</div>
-  <div class="social-icons">
-    <a href="https://github.com/RealClearwave" target="_blank" rel="noopener" aria-label="GitHub">
-      <i class="fab fa-github"></i>
-    </a>
-    <a href="mailto:tywangcs@foxmail.com" aria-label="Email">
-      <i class="fas fa-envelope"></i>
-    </a>
-    <a href="tel:+8618963611891" aria-label="Phone: 189-6361-1891" title="189-6361-1891">
-      <i class="fas fa-phone"></i>
-    </a>
-  </div>
-</aside>
-
-<!-- ===== Main Content ===== -->
-<main class="main-content">
-
-<!-- ===== Education ===== -->
-<section id="about" class="section">
-  <h1 class="section-heading">教育背景</h1>
-
-  <div class="exp-item">
-    <div class="exp-header">
-      <div>
-        <div class="exp-title">东南大学（985，211，双一流）</div>
-        <div class="exp-org">软件工程 · 硕士</div>
-      </div>
-      <div class="exp-date">2027.09 –</div>
+  <nav class="top-nav" aria-label="主导航">
+    <div class="nav-inner">
+      <a href="#about">Homepage</a>
+      <a href="#news">News</a>
+      <a href="#publications">Publications</a>
+      <a href="#honors">Honors and Awards</a>
+      <a href="#education">Educations</a>
+      <a href="#internships">Internships</a>
+      <a href="#skills">Skills</a>
     </div>
+  </nav>
+
+  <div class="layout">
+    <aside class="profile" aria-label="个人资料">
+      <img class="avatar" src="assets/images/avatar.jpg" alt="王天予的头像" width="174" height="174">
+      <h1>Tianyu Wang</h1>
+      <p class="chinese-name">王天予</p>
+      <p class="profile-detail">Software Engineering<br>Soochow University</p>
+      <p class="profile-detail">Multimodal LLM post-training · Reinforcement learning</p>
+      <p class="profile-detail">2027 届 · Seeking research and algorithm internships</p>
+      <div class="profile-links">
+        <a href="mailto:tywangcs@foxmail.com"><span aria-hidden="true">✉</span>Email</a>
+        <a href="https://github.com/RealClearwave" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">⌘</span>GitHub</a>
+        <a href="tel:+8618963611891"><span aria-hidden="true">☎</span>Phone</a>
+      </div>
+    </aside>
+
+    <main id="about">
+      <div class="intro">
+        <p>我是王天予，苏州大学软件工程本科生（GPA 前 6%），将于 2027 年 9 月进入东南大学攻读软件工程硕士。研究与工程兴趣集中在<strong>多模态大模型后训练、强化学习、UI 理解</strong>和<strong>组合图像检索</strong>，目前寻求相关实习机会。</p>
+        <p>曾在蚂蚁集团参与多模态 UI 推理模型对齐与分布式后训练，在南京大学推理与学习联合实验室参与算法集成和视觉数据处理。下方列出近期工作与经历。</p>
+      </div>
+
+      <section id="news" aria-labelledby="news-title">
+        <h2 id="news-title">🔥 News</h2>
+        <ul class="plain-list">
+          <li><span class="news-date">2026.09:</span> 参与蚂蚁集团多模态大模型后训练实习。</li>
+          <li><span class="news-date">2026:</span> AutoConcept 获 PRICAI 2026 接收。</li>
+          <li><span class="news-date">2026.09:</span> <a href="assets/papers/amend-technical-report.pdf" target="_blank" rel="noopener noreferrer">AMEND 技术报告</a>公开。</li>
+        </ul>
+      </section>
+
+      <section id="publications" aria-labelledby="publications-title">
+        <h2 id="publications-title">📝 Publications &amp; Projects</h2>
+        <article class="paper">
+          <a class="paper-image" href="assets/images/pipelines/autoconcept-pipeline.png" target="_blank" rel="noopener noreferrer" aria-label="查看 AutoConcept 流程图原图">
+            <span class="paper-badge">PRICAI 2026</span>
+            <img src="assets/images/pipelines/autoconcept-pipeline.png" alt="AutoConcept 组合图像检索与概念引导重排序流程" loading="lazy" width="5120" height="2172">
+          </a>
+          <div class="paper-body">
+            <p class="citation"><strong>Wang, T.</strong>, &amp; Wu, T. (2026). AutoConcept: Training-Free Concept-Guided Reranking for Metadata-Available Composed Image Retrieval. <em>PRICAI 2026</em>.</p>
+            <p class="paper-summary">提出面向组合图像检索（CIR）的 training-free concept-guided reranking 方法，构建显式正负偏好 concept memory，通过视觉特征过滤、相关性门控与自适应插值实现偏好感知重排序。</p>
+            <p class="paper-links"><a href="assets/papers/autoconcept-pricai-2026.pdf" target="_blank" rel="noopener noreferrer">[Paper]</a><a href="https://arxiv.org/abs/2609.01456" target="_blank" rel="noopener noreferrer">[arXiv]</a><a href="assets/images/pipelines/autoconcept-pipeline.png" target="_blank" rel="noopener noreferrer">[Pipeline]</a></p>
+          </div>
+        </article>
+        <article class="paper">
+          <a class="paper-image" href="assets/images/pipelines/amend-pipeline.png" target="_blank" rel="noopener noreferrer" aria-label="查看 AMEND 流程图原图">
+            <span class="paper-badge report">Technical report</span>
+            <img src="assets/images/pipelines/amend-pipeline.png" alt="AMEND 多智能体文本降毒与约束选择流程" loading="lazy" width="1759" height="894">
+          </a>
+          <div class="paper-body">
+            <p class="citation"><strong>Wang, T.</strong> (2026). AMEND: Constraint-Guided Multi-Agent Text Detoxification with Isolated Critics. <em>Technical report</em>.</p>
+            <p class="paper-summary">设计面向文本安全对齐的 multi-agent / multi-critic 降毒框架，通过 toxicity、semantic preservation、fluency、safety 等 critic 对候选响应进行闭环反馈与 reranking，在降低有害表达的同时约束语义保持与生成质量。</p>
+            <p class="paper-links"><a href="assets/papers/amend-technical-report.pdf" target="_blank" rel="noopener noreferrer">[Report]</a><a href="assets/images/pipelines/amend-pipeline.png" target="_blank" rel="noopener noreferrer">[Pipeline]</a></p>
+          </div>
+        </article>
+      </section>
+
+      <section id="honors" aria-labelledby="honors-title">
+        <h2 id="honors-title">🎖 Honors and Awards</h2>
+        <ul class="plain-list entry-list">
+          <li>NOIP 全国一等奖</li>
+          <li>CSP 认证成绩：370</li>
+        </ul>
+      </section>
+
+      <section id="education" aria-labelledby="education-title">
+        <h2 id="education-title">📖 Educations</h2>
+        <ul class="plain-list entry-list">
+          <li><span class="entry-date">2027.09 –</span> 东南大学（985、211、双一流），软件工程硕士（拟入学）</li>
+          <li><span class="entry-date">2023.09 – 2027.06:</span> 苏州大学（211、双一流），软件工程本科，GPA 前 6%</li>
+        </ul>
+      </section>
+
+      <section id="internships" aria-labelledby="internships-title">
+        <h2 id="internships-title">💻 Internships</h2>
+        <div class="internship">
+          <h3>蚂蚁集团 · 多模态大模型后训练 <span class="entry-date">2026.09 – 2026.11</span></h3>
+          <ul>
+            <li>参与多模态 UI 推理模型对齐，基于 <code>verl</code> 搭建后训练与实验链路。在 Qwen3 系列 32B 教师模型和 4B 学生模型上开展定位感知 SFT、GRPO 与OPD；结合 reverse-KL、JSD 等损失函数，在学生模型采样轨迹上对齐输出行为与因果注意力；参与提出注意力蒸馏等UI特化OPD改进方案。</li>
+            <li>参与 4B／32B 模型的多卡训练、实验复现和结果分析，在 16×A100 环境完成训练与 benchmark 评测；围绕 SFT、RL、OPD 和注意力蒸馏开展消融实验，量化各阶段对模型性能的贡献。</li>
+            <li>负责 UI 数据集清洗、评测集整理和模型评测。4B 模型在该数据集上提升 33.4 个百分点，超过未经后训练的 32B 模型（80.2%）；引入注意力蒸馏后，较原版 OPD 进一步在 OSWorld-G、UI-Vision 上提升9.1个百分点和11百分点。</li>
+          </ul>
+        </div>
+        <div class="internship">
+          <h3>南京大学推理与学习（R&amp;L）联合实验室（万维艾斯）· 算法实习 <span class="entry-date">2025.07 – 2025.08</span></h3>
+          <ul>
+            <li>参与某研究所 127 个机器学习算法集成平台建设，在 NVIDIA 环境复现传统机器学习算法，并在 Ascend 910 上适配、修改并重新训练 FairMOT 等视觉模型。</li>
+            <li>参与江苏路政道路异物识别系统数据链路开发，处理约 7 万张道路场景图片，完成视频关键帧抽取、YOLO 自动预标注与数据整理。</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="skills" aria-labelledby="skills-title">
+        <h2 id="skills-title">🛠 Skills</h2>
+        <ul class="plain-list skills">
+          <li><strong>大模型后训练：</strong>SFT、GRPO、OPD、奖励驱动训练、<code>verl</code>、多卡训练、rollout、benchmark 评测与消融实验。</li>
+          <li><strong>编程与多模态：</strong>Python、C/C++、PyTorch、VLM、GUI grounding、模型迁移及视觉数据处理；GitHub 100+ Stars &amp; 100+ Followers。</li>
+          <li><strong>课程与语言：</strong>CS336、CS224N；Transformer、LLM 预训练与后训练、NLP 基础；CET-6 659。</li>
+        </ul>
+      </section>
+    </main>
   </div>
 
-  <div class="exp-item">
-    <div class="exp-header">
-      <div>
-        <div class="exp-title">苏州大学（211，双一流）</div>
-        <div class="exp-org">软件工程（GPA 前 6%）· 本科</div>
-      </div>
-      <div class="exp-date">2023.09 – 2027.06</div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== Experience ===== -->
-<section id="experience" class="section">
-  <h2 class="section-heading">实习经历</h2>
-
-  <div class="exp-item">
-    <div class="exp-header">
-      <div>
-        <div class="exp-title">蚂蚁集团</div>
-        <div class="exp-org">多模态大模型后训练（LLM Post-Training / RL）</div>
-      </div>
-      <div class="exp-date">2026.09 – 2026.11</div>
-    </div>
-    <div class="exp-desc">
-      <ul>
-        <li>参与多模态 UI 推理模型对齐，基于 <code>verl</code> 搭建后训练与实验链路。在 Qwen3 系列 32B 教师模型和 4B 学生模型上开展定位感知 SFT、GRPO 与OPD；结合 reverse-KL、JSD 等损失函数，在学生模型采样轨迹上对齐输出行为与因果注意力；参与提出注意力蒸馏等UI特化OPD改进方案。</li>
-        <li>参与 4B／32B 模型的多卡训练、实验复现和结果分析，在 16×A100 环境完成训练与 benchmark 评测；围绕 SFT、RL、OPD 和注意力蒸馏开展消融实验，量化各阶段对模型性能的贡献。</li>
-        <li>负责 UI 数据集清洗、评测集整理和模型评测。4B 模型在该数据集上提升 33.4 个百分点，超过未经后训练的 32B 模型（80.2%）；引入注意力蒸馏后，较原版 OPD 进一步在 OSWorld-G、UI-Vision 上提升9.1个百分点和11百分点。</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="exp-item">
-    <div class="exp-header">
-      <div>
-        <div class="exp-title">南京大学推理与学习（R&amp;L）联合实验室（万维艾斯）</div>
-        <div class="exp-org">算法实习</div>
-      </div>
-      <div class="exp-date">2025.07 – 2025.08</div>
-    </div>
-    <div class="exp-desc">
-      <ul>
-        <li>参与某研究所 <strong>127 个机器学习算法集成平台</strong>建设，在 NVIDIA 环境复现传统机器学习算法，并在 <strong>Ascend 910</strong> 上适配、修改并重新训练 <strong>FairMOT</strong> 等视觉模型。</li>
-        <li>参与江苏路政<strong>道路异物识别系统</strong>数据链路开发，处理约 <strong>7 万张</strong>道路场景图片，完成<strong>视频关键帧抽取、YOLO 自动预标注与数据整理</strong>。</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- ===== Research & Projects ===== -->
-<section id="projects" class="section">
-  <h2 class="section-heading">科研与项目经历</h2>
-  <ul class="pub-list">
-    <li class="pub-item">
-      <span class="pub-venue">PRICAI 2026</span>
-      <div class="pub-title"><strong>Wang, T.</strong>, &amp; Wu, T. (2026). AutoConcept: Training-Free Concept-Guided Reranking for Metadata-Available Composed Image Retrieval. <em>PRICAI 2026</em>.</div>
-      <div class="pub-desc">提出面向组合图像检索（CIR）的 <strong>training-free concept-guided reranking</strong> 方法，构建显式正负偏好 concept memory，通过视觉特征过滤、相关性门控与自适应插值实现偏好感知重排序。<a href="https://arxiv.org/abs/2609.01456" target="_blank" rel="noopener">arXiv:2609.01456</a>。</div>
-      <figure class="pipeline-figure">
-        <a href="assets/images/pipelines/autoconcept-pipeline.png" target="_blank" rel="noopener" aria-label="查看 AutoConcept 完整流程图">
-          <img src="assets/images/pipelines/autoconcept-pipeline.png" alt="AutoConcept 组合图像检索与概念记忆重排序流程" loading="lazy" decoding="async">
-        </a>
-        <figcaption>AutoConcept：从组合查询检索、metadata concept memory 到自适应融合重排序的完整流程。</figcaption>
-      </figure>
-      <a class="more-link" href="assets/papers/autoconcept-pricai-2026.pdf" target="_blank"><i class="fas fa-file-pdf"></i> 阅读 AutoConcept 论文</a>
-    </li>
-    <li class="pub-item">
-      <span class="pub-venue inprogress">2026</span>
-      <div class="pub-title"><strong>Wang, T.</strong> (2026). AMEND: Constraint-Guided Multi-Agent Text Detoxification with Isolated Critics. <em>Technical report</em>.</div>
-      <div class="pub-desc">设计面向文本安全对齐的 <strong>multi-agent / multi-critic</strong> 降毒框架，通过 toxicity、semantic preservation、fluency、safety 等 critic 对候选响应进行闭环反馈与 reranking，在降低有害表达的同时约束语义保持与生成质量。</div>
-      <figure class="pipeline-figure">
-        <a href="assets/images/pipelines/amend-pipeline.png" target="_blank" rel="noopener" aria-label="查看 AMEND 完整流程图">
-          <img src="assets/images/pipelines/amend-pipeline.png" alt="AMEND 多智能体候选生成、隔离批评、约束选择与定向修复流程" loading="lazy" decoding="async">
-        </a>
-        <figcaption>AMEND：角色化候选生成、隔离 critics、硬约束选择与 residual-span 定向修复流程。</figcaption>
-      </figure>
-      <a class="more-link" href="assets/papers/amend-technical-report.pdf" target="_blank"><i class="fas fa-file-pdf"></i> 阅读 AMEND 技术报告</a>
-    </li>
-  </ul>
-</section>
-
-<!-- ===== Skills ===== -->
-<section id="skills" class="section">
-  <h2 class="section-heading">专业技能</h2>
-  <div class="highlight-box"><strong>LLM Post-Training：</strong>拥有多模态大模型后训练实践，熟悉 <strong>SFT、GRPO、OPD、reward-based training</strong>，具备 <strong>verl、多卡训练、rollout、benchmark evaluation 与 controlled ablation</strong> 经验。</div>
-  <div class="highlight-box"><strong>基础与编程：</strong><strong>Python、C/C++、PyTorch</strong>；具备 <strong>VLM、GUI grounding、模型迁移与视觉数据 pipeline</strong> 实践；完成 <strong>CS336、CS224N</strong> 等课程学习，具备 Transformer、LLM Pre-training / Post-Training 与 NLP 基础；<strong>NOIP 国一，CSP 370，CET-6 659，Github 100+ Stars &amp; 100+ Followers</strong>。</div>
-  <ul class="pub-list" hidden>
-
-    <li class="pub-item">
-      <span class="pub-venue">PRICAI 2026</span>
-      <div class="pub-title">AutoConcept: Training-Free Concept-Guided Reranking for Metadata-Available Composed Image Retrieval</div>
-      <div class="pub-authors"><span class="me">Tianyu Wang</span> &amp; T. Wu</div>
-      <div class="pub-desc">提出显式概念记忆机制用于训练无关的组合图像检索重排序，在 FashionIQ 上显著提升 R@10 指标（WeiMoCIR 0.1125→0.1379，LinCIR 0.2605→0.3009），同时提供可解释的概念激活与自适应插值机制。</div>
-      <div class="pub-tags">
-        <span class="pub-tag">CIR</span><span class="pub-tag">Concept Memory</span><span class="pub-tag">Training-Free</span>
-      </div>
-    </li>
-
-    <li class="pub-item">
-      <span class="pub-venue inprogress">In Progress</span>
-      <div class="pub-title">VICER: VIsion-Concept Enhanced Retrieval</div>
-      <div class="pub-authors"><span class="me">Tianyu Wang</span>, et al.</div>
-      <div class="pub-desc">多模态零样本生成系统，通过反向概念匹配识别长尾/个性化概念，融合图像、文本与指令嵌入进行 CIR 多模态对齐，引入残差回传保留视觉细节。在自建长尾零样本数据集上优于基线方法。</div>
-      <div class="pub-tags">
-        <span class="pub-tag">MLLM</span><span class="pub-tag">Zero-Shot</span><span class="pub-tag">ViT</span><span class="pub-tag">Concept Matching</span>
-      </div>
-    </li>
-
-    <li class="pub-item">
-      <span class="pub-venue">Under Review</span>
-      <div class="pub-title">Critic-Guided Multi-Agent Text Detoxification for Fine-Grained Harm Reduction <small>[1]</small></div>
-      <div class="pub-authors"><span class="me">Tianyu Wang</span>, et al.</div>
-      <div class="pub-desc">多智能体文本降毒框架，通过多重 critic 闭环反馈排序优化生成。在 UCB 数据集上 MoAGAN R² 提升至 0.6848（基线 0.4987），Bilibili-Xiaoheiwu 检测准确率 0.7386，优于 prompt 或 RoBERTa。</div>
-      <div class="pub-tags">
-        <span class="pub-tag">LLM Agents</span><span class="pub-tag">Text Detox</span><span class="pub-tag">Content Safety</span>
-      </div>
-    </li>
-
-    <li class="pub-item">
-      <span class="pub-venue journal">省刊</span>
-      <div class="pub-title">在线评测系统中的边缘计算应用研究</div>
-      <div class="pub-authors"><span class="me">王天予</span>, et al.</div>
-      <div class="pub-desc">将边缘计算用于在线评测系统，通过客户端分布式评测、K-means 异常检测与代码交叉验证优化。并发超过 3 时分布式评测耗时优势明显，异常检测精确率 0.66、召回率 0.67。</div>
-      <div class="pub-tags">
-        <span class="pub-tag">Edge Computing</span><span class="pub-tag">OJ System</span>
-      </div>
-    </li>
-
-  </ul>
-</section>
-
-<!-- ===== Awards ===== -->
-<section id="awards" class="section" hidden>
-  <h2 class="section-heading">Honors &amp; Awards</h2>
-
-  <h3 style="font-size:16px;font-weight:600;margin-bottom:12px;color:var(--text);">学科竞赛</h3>
-  <ul class="award-list">
-    <li class="award-item">
-      <span class="award-date">2024.08</span>
-      <span class="award-name">中国机器人及人工智能大赛<span class="award-level">国家级一等奖</span></span>
-    </li>
-    <li class="award-item">
-      <span class="award-date">2024.04</span>
-      <span class="award-name">团体程序设计天梯赛 (GPLT)<span class="award-level">国家级三等奖</span></span>
-    </li>
-    <li class="award-item">
-      <span class="award-date">2024.04</span>
-      <span class="award-name">蓝桥杯全国软件和信息技术专业人才大赛<span class="award-level">国家级优秀奖</span></span>
-    </li>
-    <li class="award-item">
-      <span class="award-date">2024.04</span>
-      <span class="award-name">蓝桥杯软件和信息技术专业人才大赛江苏赛区<span class="award-level province">省一等奖</span></span>
-    </li>
-  </ul>
-
-  <h3 style="font-size:16px;font-weight:600;margin:24px 0 12px;color:var(--text);">荣誉奖项</h3>
-  <ul class="award-list">
-    <li class="award-item">
-      <span class="award-date">2024-2025</span>
-      <span class="award-name">苏州大学学习优秀奖学金 特等奖</span>
-    </li>
-    <li class="award-item">
-      <span class="award-date">2023-2024</span>
-      <span class="award-name">苏州大学创新创业奖学金 特等奖</span>
-    </li>
-    <li class="award-item">
-      <span class="award-date">2023-2024</span>
-      <span class="award-name">苏州大学学习优秀奖学金 一等奖</span>
-    </li>
-    <li class="award-item">
-      <span class="award-date">2024-2025</span>
-      <span class="award-name">苏州大学综合奖学金</span>
-    </li>
-    <li class="award-item">
-      <span class="award-date">2024-2025</span>
-      <span class="award-name">苏州大学专项奖学金 · 精神文明专项奖</span>
-    </li>
-    <li class="award-item">
-      <span class="award-date">2024</span>
-      <span class="award-name">苏州大学创新创业创意大赛 三等奖</span>
-    </li>
-  </ul>
-</section>
-
-</main>
-</div>
-
-<!-- ===== Footer ===== -->
-<footer class="page-footer">
-  <p>&copy; 2026 王天予 · Tianyu Wang</p>
-  <p>Powered by GitHub Pages · <a href="https://github.com/RealClearwave/realclearwave.github.io">Source</a></p>
-</footer>
-
-<!-- ===== Scripts ===== -->
-<script>
-  // Auto dark mode based on system preference
-  (function() {
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-    if (prefersDark.matches) {
-      document.documentElement.setAttribute('data-theme', 'dark');
-    }
-    prefersDark.addEventListener('change', e => {
-      if (e.matches) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-      } else {
-        document.documentElement.removeAttribute('data-theme');
-      }
-    });
-  })();
-
-  // Mobile nav toggle
-  const toggler = document.getElementById('navbarToggler');
-  const navLinks = document.getElementById('navbarLinks');
-  toggler.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
-  });
-
-  // Scroll spy
-  const sections = document.querySelectorAll('section[id]');
-  const navAs = document.querySelectorAll('.navbar-links a[href^="#"]');
-
-  function updateActive() {
-    let current = '';
-    sections.forEach(s => {
-      const top = s.getBoundingClientRect().top;
-      if (top <= 100) current = s.id;
-    });
-    navAs.forEach(a => {
-      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
-    });
-  }
-  window.addEventListener('scroll', updateActive, { passive: true });
-
-  // Close mobile nav on link click
-  navLinks.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => navLinks.classList.remove('open'));
-  });
-</script>
-
+  <footer>© 2026 Tianyu Wang · <a href="https://github.com/RealClearwave/realclearwave.github.io">Source</a> · Layout inspired by <a href="https://mdswyz.github.io/">Yuanzhi Wang's homepage</a>.</footer>
 </body>
 </html>
