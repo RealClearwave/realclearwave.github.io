@@ -42,7 +42,6 @@
     .plain-list { margin: 0; padding-left: 29px; }
     .plain-list li { padding-left: 3px; margin: 4px 0; }
     .plain-list li::marker { color: #535b64; }
-    .news-date { font-style: italic; font-weight: 700; white-space: nowrap; }
     .paper { display: grid; grid-template-columns: minmax(230px, 39%) minmax(0, 1fr); gap: 28px; align-items: center; padding: 17px 0 23px; border-bottom: 1px solid var(--line); }
     .paper:last-child { border-bottom: 0; }
     .paper-image { position: relative; display: block; min-width: 0; color: inherit; }
@@ -95,11 +94,10 @@
   <nav class="top-nav" aria-label="主导航">
     <div class="nav-inner">
       <a href="#about">Homepage</a>
-      <a href="#news">News</a>
-      <a href="#publications">Publications</a>
-      <a href="#honors">Honors and Awards</a>
       <a href="#education">Educations</a>
       <a href="#internships">Internships</a>
+      <a href="#publications">Publications &amp; Projects</a>
+      <a href="#honors">Honors &amp; Rewards</a>
       <a href="#skills">Skills</a>
     </div>
   </nav>
@@ -124,49 +122,6 @@
         <p>我是王天予，苏州大学软件工程本科生（GPA 前 6%），将于 2027 年 9 月进入东南大学攻读软件工程硕士。研究与工程兴趣集中在<strong>多模态大模型后训练、强化学习、UI 理解</strong>和<strong>组合图像检索</strong>，目前寻求相关实习机会。</p>
         <p>曾在蚂蚁集团参与多模态 UI 推理模型对齐与分布式后训练，在南京大学推理与学习联合实验室参与算法集成和视觉数据处理。下方列出近期工作与经历。</p>
       </div>
-
-      <section id="news" aria-labelledby="news-title">
-        <h2 id="news-title">🔥 News</h2>
-        <ul class="plain-list">
-          <li><span class="news-date">2026.09:</span> 参与蚂蚁集团多模态大模型后训练实习。</li>
-          <li><span class="news-date">2026:</span> AutoConcept 获 PRICAI 2026 接收。</li>
-          <li><span class="news-date">2026.09:</span> <a href="assets/papers/amend-technical-report.pdf" target="_blank" rel="noopener noreferrer">AMEND 技术报告</a>公开。</li>
-        </ul>
-      </section>
-
-      <section id="publications" aria-labelledby="publications-title">
-        <h2 id="publications-title">📝 Publications &amp; Projects</h2>
-        <article class="paper">
-          <a class="paper-image" href="assets/images/pipelines/autoconcept-pipeline.png" target="_blank" rel="noopener noreferrer" aria-label="查看 AutoConcept 流程图原图">
-            <span class="paper-badge">PRICAI 2026</span>
-            <img src="assets/images/pipelines/autoconcept-pipeline.png" alt="AutoConcept 组合图像检索与概念引导重排序流程" loading="lazy" width="5120" height="2172">
-          </a>
-          <div class="paper-body">
-            <p class="citation"><strong>Wang, T.</strong>, &amp; Wu, T. (2026). AutoConcept: Training-Free Concept-Guided Reranking for Metadata-Available Composed Image Retrieval. <em>PRICAI 2026</em>.</p>
-            <p class="paper-summary">提出面向组合图像检索（CIR）的 training-free concept-guided reranking 方法，构建显式正负偏好 concept memory，通过视觉特征过滤、相关性门控与自适应插值实现偏好感知重排序。</p>
-            <p class="paper-links"><a href="assets/papers/autoconcept-pricai-2026.pdf" target="_blank" rel="noopener noreferrer">[Paper]</a><a href="https://arxiv.org/abs/2609.01456" target="_blank" rel="noopener noreferrer">[arXiv]</a><a href="assets/images/pipelines/autoconcept-pipeline.png" target="_blank" rel="noopener noreferrer">[Pipeline]</a></p>
-          </div>
-        </article>
-        <article class="paper">
-          <a class="paper-image" href="assets/images/pipelines/amend-pipeline.png" target="_blank" rel="noopener noreferrer" aria-label="查看 AMEND 流程图原图">
-            <span class="paper-badge report">Technical report</span>
-            <img src="assets/images/pipelines/amend-pipeline.png" alt="AMEND 多智能体文本降毒与约束选择流程" loading="lazy" width="1759" height="894">
-          </a>
-          <div class="paper-body">
-            <p class="citation"><strong>Wang, T.</strong> (2026). AMEND: Constraint-Guided Multi-Agent Text Detoxification with Isolated Critics. <em>Technical report</em>.</p>
-            <p class="paper-summary">设计面向文本安全对齐的 multi-agent / multi-critic 降毒框架，通过 toxicity、semantic preservation、fluency、safety 等 critic 对候选响应进行闭环反馈与 reranking，在降低有害表达的同时约束语义保持与生成质量。</p>
-            <p class="paper-links"><a href="assets/papers/amend-technical-report.pdf" target="_blank" rel="noopener noreferrer">[Report]</a><a href="assets/images/pipelines/amend-pipeline.png" target="_blank" rel="noopener noreferrer">[Pipeline]</a></p>
-          </div>
-        </article>
-      </section>
-
-      <section id="honors" aria-labelledby="honors-title">
-        <h2 id="honors-title">🎖 Honors and Awards</h2>
-        <ul class="plain-list entry-list">
-          <li>NOIP 全国一等奖</li>
-          <li>CSP 认证成绩：370</li>
-        </ul>
-      </section>
 
       <section id="education" aria-labelledby="education-title">
         <h2 id="education-title">📖 Educations</h2>
@@ -193,6 +148,58 @@
             <li>参与江苏路政道路异物识别系统数据链路开发，处理约 7 万张道路场景图片，完成视频关键帧抽取、YOLO 自动预标注与数据整理。</li>
           </ul>
         </div>
+        <div class="internship">
+          <h3>苏州大学 NLP 实验室 · 科研经历 <span class="entry-date">2025 – 至今</span></h3>
+          <ul>
+            <li>作为核心成员参与苏州大学创新训练项目《面向多模态信息的幽默生成系统》。</li>
+          </ul>
+        </div>
+        <div class="internship">
+          <h3>苏州大学 Beelab 实验室 · 项目经历 <span class="entry-date">2025 – 至今</span></h3>
+          <ul>
+            <li>参与基于国产芯片和 Apollo 自动驾驶平台的无人快递车 Demo 开发，负责电气调试。</li>
+            <li>参与基于视觉的自动车道线识别，使用 U-Net 分割算法识别车道线，负责数据标注。</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="publications" aria-labelledby="publications-title">
+        <h2 id="publications-title">📝 Publications &amp; Projects</h2>
+        <article class="paper">
+          <a class="paper-image" href="assets/images/pipelines/autoconcept-pipeline.png" target="_blank" rel="noopener noreferrer" aria-label="查看 AutoConcept 流程图原图">
+            <span class="paper-badge">PRICAI 2026</span>
+            <img src="assets/images/pipelines/autoconcept-pipeline.png" alt="AutoConcept 组合图像检索与概念引导重排序流程" loading="lazy" width="5120" height="2172">
+          </a>
+          <div class="paper-body">
+            <p class="citation"><strong>Wang, T.</strong>, &amp; Wu, T. (2026). AutoConcept: Training-Free Concept-Guided Reranking for Metadata-Available Composed Image Retrieval. <em>PRICAI 2026</em>.</p>
+            <p class="paper-summary">提出面向组合图像检索（CIR）的 training-free concept-guided reranking 方法，构建显式正负偏好 concept memory，通过视觉特征过滤、相关性门控与自适应插值实现偏好感知重排序。</p>
+            <p class="paper-links"><a href="assets/papers/autoconcept-pricai-2026.pdf" target="_blank" rel="noopener noreferrer">[Paper]</a><a href="https://arxiv.org/abs/2609.01456" target="_blank" rel="noopener noreferrer">[arXiv]</a></p>
+          </div>
+        </article>
+        <article class="paper">
+          <a class="paper-image" href="assets/images/pipelines/amend-pipeline.png" target="_blank" rel="noopener noreferrer" aria-label="查看 AMEND 流程图原图">
+            <span class="paper-badge report">Technical report</span>
+            <img src="assets/images/pipelines/amend-pipeline.png" alt="AMEND 多智能体文本降毒与约束选择流程" loading="lazy" width="1759" height="894">
+          </a>
+          <div class="paper-body">
+            <p class="citation"><strong>Wang, T.</strong> (2026). AMEND: Constraint-Guided Multi-Agent Text Detoxification with Isolated Critics. <em>Technical report</em>.</p>
+            <p class="paper-summary">设计面向文本安全对齐的 multi-agent / multi-critic 降毒框架，通过 toxicity、semantic preservation、fluency、safety 等 critic 对候选响应进行闭环反馈与 reranking，在降低有害表达的同时约束语义保持与生成质量。</p>
+            <p class="paper-links"><a href="assets/papers/amend-technical-report.pdf" target="_blank" rel="noopener noreferrer">[Report]</a></p>
+          </div>
+        </article>
+      </section>
+
+      <section id="honors" aria-labelledby="honors-title">
+        <h2 id="honors-title">🎖 Honors &amp; Rewards</h2>
+        <ul class="plain-list entry-list">
+          <li>第二十六届中国机器人及人工智能大赛，国家级一等奖</li>
+          <li>中国高校计算机大赛团体程序设计天梯赛，国家级三等奖</li>
+          <li>第十五届蓝桥杯全国软件和信息技术专业人才大赛，国家级优秀奖；江苏赛区省一等奖</li>
+          <li>苏州大学 2024 年创新创业创意大赛，三等奖</li>
+          <li>苏州大学学习优秀奖学金特等奖（2024–2025）、一等奖（2023–2024）</li>
+          <li>苏州大学创新创业奖学金特等奖（2023–2024）</li>
+          <li>苏州大学综合奖学金、精神文明专项奖（2024–2025）</li>
+        </ul>
       </section>
 
       <section id="skills" aria-labelledby="skills-title">
@@ -200,12 +207,14 @@
         <ul class="plain-list skills">
           <li><strong>大模型后训练：</strong>SFT、GRPO、OPD、奖励驱动训练、<code>verl</code>、多卡训练、rollout、benchmark 评测与消融实验。</li>
           <li><strong>编程与多模态：</strong>Python、C/C++、PyTorch、VLM、GUI grounding、模型迁移及视觉数据处理；GitHub 100+ Stars &amp; 100+ Followers。</li>
-          <li><strong>课程与语言：</strong>CS336、CS224N；Transformer、LLM 预训练与后训练、NLP 基础；CET-6 659。</li>
+          <li><strong>课程与基础：</strong>CS336、CS224N；Transformer、LLM 预训练与后训练、NLP 基础。</li>
+          <li><strong>CSP：</strong>370（前 1.34%）</li>
+          <li><strong>CET-6：</strong>659</li>
         </ul>
       </section>
     </main>
   </div>
 
-  <footer>© 2026 Tianyu Wang · <a href="https://github.com/RealClearwave/realclearwave.github.io">Source</a> · Layout inspired by <a href="https://mdswyz.github.io/">Yuanzhi Wang's homepage</a>.</footer>
+  <footer>© 2026 Tianyu Wang · <a href="https://github.com/RealClearwave/realclearwave.github.io">Source</a></footer>
 </body>
 </html>
