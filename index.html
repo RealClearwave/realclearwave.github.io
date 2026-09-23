@@ -144,7 +144,7 @@
           </div>
           <p class="entry-date">2026.09 – 2026.11</p>
           <p class="project-stack">Qwen3 系列 32B 教师模型 / 4B 学生模型 / <code>verl</code> / SFT / GRPO / OPD / reverse-KL / JSD</p>
-          <p class="project-background"><strong>项目背景：</strong>围绕多模态 UI 推理与目标定位任务，使用强化学习和蒸馏将大模型的推理能力迁移到更轻量的学生模型。</p>
+          <p class="project-background"><strong>项目背景：</strong>面向支付宝用户反馈场景：用户提交反馈并上传截图后，系统通过 UI 理解与推理判断用户遇到的状况，帮助用户排除问题，或将相关反馈交由开发团队处理。</p>
           <ul class="project-points">
             <li><strong>后训练与对齐：</strong>基于 <code>verl</code> 搭建训练和实验链路，开展定位感知 SFT、GRPO 与 OPD；在学生模型采样轨迹上，使用 reverse-KL 对齐输出行为，并以 JSD 对齐因果注意力。</li>
             <li><strong>分布式训练与消融：</strong>参与 4B／32B 模型多卡训练、实验复现和结果分析，在 16×A100 环境完成训练与评测；拆解 SFT、RL、OPD 和注意力蒸馏各阶段的贡献。</li>
