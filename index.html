@@ -148,7 +148,7 @@
           <ul class="project-points">
             <li><strong>后训练与对齐：</strong>基于 <code>verl</code> 搭建训练和实验链路，开展定位感知 SFT、GRPO 与 OPD；在学生模型采样轨迹上，使用 reverse-KL 对齐输出行为，并用 JSD 对齐因果注意力。</li>
             <li><strong>分布式训练与消融：</strong>参与 4B／32B 模型多卡训练、实验复现和结果分析，在 16×A100 环境完成训练与评测；负责消融实验，拆解 SFT、RL、OPD 和注意力蒸馏各阶段的贡献。</li>
-            <li><strong>数据与效果评测：</strong>负责内部 UI 数据清洗、评测集整理和模型评测。4B 学生模型在内部评测集上提升 <strong>33.4 个百分点</strong>；注意力蒸馏较仅使用输出蒸馏的方案进一步提升 <strong>2.7 个百分点</strong>；相较UI-TARS-7B模型，在UI-Vision和OSWorld-G基准上分别高出 <strong>9.1 个百分点</strong>和 <strong>11.0 个百分点</strong>。</li>
+            <li><strong>数据与效果评测：</strong>负责内部 UI 数据清洗、评测集整理和模型评测。采用VLM自动清洗标注管线标注数据超57万条，包含清洗和收集整理3大类任务，其中元素可用性类、信息架构类和设计一致性类分别23.2万、22.7万、11.6万条。利用多种benchmark进行评测，其中4B 学生模型在内部评测集上提升 <strong>33.4 个百分点</strong>；注意力蒸馏较仅使用输出蒸馏的方案进一步提升 <strong>2.7 个百分点</strong>；相较UI-TARS-7B模型，在UI-Vision和OSWorld-G基准上分别高出 <strong>9.1 个百分点</strong>和 <strong>11.0 个百分点</strong>。</li>
           </ul>
         </div>
         <div class="internship">
