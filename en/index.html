@@ -1,16 +1,16 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="author" content="王天予 · Tianyu Wang">
-  <meta name="description" content="Clearwave's Homepage">
-  <link rel="canonical" href="https://cv.clearwave.top/">
+  <meta name="author" content="Tianyu Wang">
+  <meta name="description" content="Tianyu Wang's academic and professional homepage.">
+  <link rel="canonical" href="https://cv.clearwave.top/en/">
   <link rel="alternate" hreflang="zh-CN" href="https://cv.clearwave.top/">
   <link rel="alternate" hreflang="en" href="https://cv.clearwave.top/en/">
   <link rel="alternate" hreflang="x-default" href="https://cv.clearwave.top/">
   <meta name="theme-color" content="#ffffff">
-  <title>Tianyu Wang (王天予) - Homepage</title>
+  <title>Tianyu Wang - Homepage</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%233e4b5d'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-size='29' font-family='sans-serif' font-weight='700' fill='white'%3ETW%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -108,7 +108,7 @@
   </style>
 </head>
 <body>
-  <nav class="top-nav" aria-label="主导航">
+  <nav class="top-nav" aria-label="Main navigation">
     <div class="nav-inner">
       <div class="nav-links">
         <a href="#about">Homepage</a>
@@ -118,8 +118,8 @@
         <a href="#honors">Honors &amp; Rewards</a>
         <a href="#skills">Skills</a>
       </div>
-      <label class="language-switch"><span class="sr-only">语言</span>
-        <select id="language-select" aria-label="选择语言">
+      <label class="language-switch"><span class="sr-only">Language</span>
+        <select id="language-select" aria-label="Select language">
           <option value="zh">中文</option>
           <option value="en">English</option>
         </select>
@@ -128,8 +128,8 @@
   </nav>
 
   <div class="layout">
-    <aside class="profile" aria-label="个人资料">
-      <img class="avatar" src="assets/images/avatar.jpg" alt="王天予的头像" width="174" height="174">
+    <aside class="profile" aria-label="Profile">
+      <img class="avatar" src="../assets/images/avatar.jpg" alt="Portrait of Tianyu Wang" width="174" height="174">
       <h1>Tianyu Wang</h1>
       <p class="chinese-name">王天予</p>
       <p class="profile-detail">Multimodal LLM post-training · Reinforcement learning</p>
@@ -142,14 +142,14 @@
 
     <main id="about">
       <div class="intro">
-        <p>我是王天予，苏州大学软件工程本科生，将于 2027 年 9 月进入东南大学攻读软件工程硕士。研究与工程兴趣集中在<strong>多模态大模型后训练、强化学习</strong>和<strong>多智能体</strong>等方面，目前寻求相关实习机会。</p>
+        <p>I am Tianyu Wang, an undergraduate in Software Engineering at Soochow University. I will begin an M.S. in Software Engineering at Southeast University in September 2027. My interests include <strong>multimodal LLM post-training, reinforcement learning</strong>, and <strong>multi-agent systems</strong>. I am seeking internships in these areas.</p>
       </div>
 
       <section id="education" aria-labelledby="education-title">
         <h2 id="education-title">📖 Educations</h2>
         <ul class="plain-list entry-list">
-          <li><span class="entry-date">2027.09 –</span> 东南大学（985、211、双一流），软件工程硕士（推免已拟录取）</li>
-          <li><span class="entry-date">2023.09 – 2027.06:</span> 苏州大学（211、双一流），软件工程本科，GPA 前 6%</li>
+          <li><span class="entry-date">2027.09 –</span> Southeast University (Project 985, Project 211, Double First-Class), incoming M.S. in Software Engineering (recommended admission)</li>
+          <li><span class="entry-date">2023.09 – 2027.06:</span> Soochow University (Project 211, Double First-Class), B.Eng. in Software Engineering, GPA in the top 6%</li>
         </ul>
       </section>
 
@@ -157,23 +157,23 @@
         <h2 id="internships-title">💻 Internships</h2>
         <div class="internship">
           <div class="project-heading">
-            <h3>蚂蚁集团 · 多模态 UI 推理模型后训练</h3>
-            <p class="project-focus">大模型后训练 / 强化学习 / 分布式训练</p>
+            <h3>Ant Group · Multimodal UI Reasoning Model Post-training</h3>
+            <p class="project-focus">LLM Post-training / Reinforcement Learning / Distributed Training</p>
           </div>
-          <p class="entry-date">2026.09 – 至今</p>
+          <p class="entry-date">Sep 2026 – Present</p>
           <p class="project-stack"><code>ms-swift</code> / SFT / GRPO / OPD / DeepSpeed / vLLM</p>
-          <p class="project-background"><strong>背景：</strong>基于<strong>支付宝</strong>真实数据，处理用户反馈场景：用户提交反馈并上传截图后，系统通过 UI 理解与推理判断用户遇到的状况，帮助用户排除问题，或将相关反馈交由开发团队处理。</p>
+          <p class="project-background"><strong>Background:</strong> Using real <strong>Alipay</strong> user data, the project handles feedback requests. After users submit feedback and screenshots, the system interprets the UI and reasons about their situation to help troubleshoot the issue or route the feedback to the development team.</p>
           <ul class="project-points">
-            <li><strong>后训练与对齐：</strong>基于定制版 <code>ms-swift</code> 搭建教师和学生 SFT、GRPO 后，学生继续 OPD 、Attention KD的训练链路。GRPO阶段每个问题采样 8 条回答计算组内相对优势；OPD阶段在自身采样的轨迹上接受冻结教师指导，通过输出分布的 reverse-KL 蒸馏和末层因果注意力的 JSD 蒸馏，将答案行为与关注上下文的位置一起对齐。</li>
-            <li><strong>分布式训练与消融：</strong>参与 4B／32B 模型在 <strong>16×Nvidia A100 80G</strong> 环境下的多卡训练、实验复现与结果分析；采用 DeepSpeed ZeRO 分片和梯度检查点控制显存占用，在 GRPO 与 OPD 阶段均设置格式、答案正确性、超长惩罚奖励，权重为 <strong>1.0∶1.0∶0.5</strong>，并启用动态采样。负责分阶段消融，对比引入 SFT、GRPO、OPD，Attention KD后的效果，拆解各阶段对最终表现的贡献。</li>
-            <li><strong>数据与效果评测：</strong>负责内部 UI 数据清洗、评测集整理和模型评测。采用VLM自动清洗标注管线标注数据超57万条，包含清洗和收集整理3大类任务，其中元素可用性类、信息架构类和设计一致性类分别<strong>23.2万、22.7万、11.6万条</strong>。利用多种benchmark进行评测，其中4B 学生模型在内部评测集上提升 <strong>33.4 个百分点</strong>；注意力蒸馏较仅使用输出蒸馏的方案进一步提升 <strong>2.7 个百分点</strong>；相较UI-TARS-7B模型，在UI-Vision和OSWorld-G基准上分别高出 <strong>9.1 个百分点</strong>和 <strong>11.0 个百分点</strong>。</li>
+            <li><strong>Post-training and alignment:</strong> Built teacher and student SFT and GRPO pipelines with a customized version of <code>ms-swift</code>, followed by student OPD and attention knowledge distillation. GRPO samples eight responses per question to compute group-relative advantages. In OPD, a frozen teacher supervises the student on its own sampled trajectories: reverse-KL distillation aligns output distributions, and JSD distillation of final-layer causal attention aligns where the model attends in context.</li>
+            <li><strong>Distributed training and ablations:</strong> Participated in multi-GPU training, experiment replication, and result analysis for 4B and 32B models on <strong>16 NVIDIA A100 80GB GPUs</strong>. Used DeepSpeed ZeRO sharding and gradient checkpointing to reduce memory use. GRPO and OPD used rewards for response format and answer correctness plus an overlength penalty, weighted <strong>1.0:1.0:0.5</strong>, with dynamic sampling. Led staged ablations of SFT, GRPO, OPD, and attention distillation to isolate each stage’s contribution.</li>
+            <li><strong>Data and evaluation:</strong> Cleaned internal UI data, organized evaluation sets, and evaluated models. A VLM-based automated cleaning and labeling pipeline annotated more than 570,000 examples across three task categories: element usability (<strong>232,000</strong>), information architecture (<strong>227,000</strong>), and design consistency (<strong>116,000</strong>). The 4B student gained <strong>33.4 percentage points</strong> on an internal evaluation set; attention distillation added <strong>2.7 points</strong> over output-only distillation. Compared with UI-TARS-7B, it scored <strong>9.1</strong> and <strong>11.0 points</strong> higher on UI-Vision and OSWorld-G, respectively.</li>
           </ul>
         </div>
         <div class="internship">
-          <h3>南京大学推理与学习（R&amp;L）联合实验室（万维艾斯）· 算法实习 <span class="entry-date">2025.07 – 2025.09</span></h3>
+          <h3>Nanjing University Reasoning and Learning (R&amp;L) Joint Laboratory (Wanwei Aisi) · Algorithm Intern <span class="entry-date">Jul 2025 – Sep 2025</span></h3>
           <ul>
-            <li>参与某研究所 127 个机器学习算法集成平台建设，在 NVIDIA 环境复现传统机器学习算法，并在 Ascend 910 上适配、修改并重新训练 FairMOT 等视觉模型。</li>
-            <li>参与江苏路政道路异物识别系统数据链路开发，处理约 7 万张道路场景图片，完成视频关键帧抽取、YOLO 自动预标注与数据整理。</li>
+            <li>Contributed to a platform integrating 127 machine-learning algorithms for a research institute. Reproduced classical ML algorithms on NVIDIA hardware and adapted, modified, and retrained vision models including FairMOT on Ascend 910.</li>
+            <li>Contributed to the data pipeline for a Jiangsu road-debris detection system, processing about 70,000 road-scene images through video keyframe extraction, YOLO-assisted pre-annotation, and data organization.</li>
           </ul>
         </div>
       </section>
@@ -181,25 +181,25 @@
       <section id="publications" aria-labelledby="publications-title">
         <h2 id="publications-title">📝 Publications &amp; Projects</h2>
         <article class="paper">
-          <a class="paper-image" href="assets/images/pipelines/autoconcept-pipeline.png" target="_blank" rel="noopener noreferrer" aria-label="查看 AutoConcept 流程图原图">
+          <a class="paper-image" href="../assets/images/pipelines/autoconcept-pipeline.png" target="_blank" rel="noopener noreferrer" aria-label="View the full AutoConcept pipeline">
             <span class="paper-badge">PRICAI 2026</span>
-            <img src="assets/images/pipelines/autoconcept-pipeline.png" alt="AutoConcept 组合图像检索与概念引导重排序流程" loading="lazy" width="5120" height="2172">
+            <img src="../assets/images/pipelines/autoconcept-pipeline.png" alt="AutoConcept pipeline for concept-guided reranking in composed image retrieval" loading="lazy" width="5120" height="2172">
           </a>
           <div class="paper-body">
             <p class="citation"><strong>Wang, T.</strong>, &amp; Wu, T. (2026). AutoConcept: Training-Free Concept-Guided Reranking for Metadata-Available Composed Image Retrieval. <em>PRICAI 2026</em>.</p>
-            <p class="paper-summary">提出面向组合图像检索（CIR）的 training-free concept-guided reranking 方法，构建显式正负偏好 concept memory，通过视觉特征过滤、相关性门控与自适应插值实现偏好感知重排序。</p>
-            <p class="paper-links"><a href="assets/papers/autoconcept-pricai-2026.pdf" target="_blank" rel="noopener noreferrer">[Paper]</a><a href="https://arxiv.org/abs/2609.01456" target="_blank" rel="noopener noreferrer">[arXiv]</a></p>
+            <p class="paper-summary">Proposed a training-free concept-guided reranking method for composed image retrieval (CIR). An explicit memory of positive and negative preferences supports preference-aware reranking through visual-feature filtering, relevance gating, and adaptive score interpolation.</p>
+            <p class="paper-links"><a href="../assets/papers/autoconcept-pricai-2026.pdf" target="_blank" rel="noopener noreferrer">[Paper]</a><a href="https://arxiv.org/abs/2609.01456" target="_blank" rel="noopener noreferrer">[arXiv]</a></p>
           </div>
         </article>
         <article class="paper">
-          <a class="paper-image" href="assets/images/pipelines/amend-pipeline.png" target="_blank" rel="noopener noreferrer" aria-label="查看 AMEND 流程图原图">
+          <a class="paper-image" href="../assets/images/pipelines/amend-pipeline.png" target="_blank" rel="noopener noreferrer" aria-label="View the full AMEND pipeline">
             <span class="paper-badge report">Technical report</span>
-            <img src="assets/images/pipelines/amend-pipeline.png" alt="AMEND 多智能体文本降毒与约束选择流程" loading="lazy" width="1759" height="894">
+            <img src="../assets/images/pipelines/amend-pipeline.png" alt="AMEND pipeline for multi-agent text detoxification and constrained selection" loading="lazy" width="1759" height="894">
           </a>
           <div class="paper-body">
             <p class="citation"><strong>Wang, T.</strong> (2026). AMEND: Constraint-Guided Multi-Agent Text Detoxification with Isolated Critics. <em>Technical report</em>.</p>
-            <p class="paper-summary">设计面向文本安全对齐的 multi-agent / multi-critic 降毒框架，通过 toxicity、semantic preservation、fluency、safety 等 critic 对候选响应进行闭环反馈与 reranking，在降低有害表达的同时约束语义保持与生成质量。</p>
-            <p class="paper-links"><a href="assets/papers/amend-technical-report.pdf" target="_blank" rel="noopener noreferrer">[Report]</a></p>
+            <p class="paper-summary">Designed a multi-agent, multi-critic text detoxification framework for safety alignment. Critics for toxicity, semantic preservation, fluency, and safety provide iterative feedback and rerank candidate responses, reducing harmful language while preserving meaning and generation quality.</p>
+            <p class="paper-links"><a href="../assets/papers/amend-technical-report.pdf" target="_blank" rel="noopener noreferrer">[Report]</a></p>
           </div>
         </article>
       </section>
@@ -207,24 +207,24 @@
       <section id="honors" aria-labelledby="honors-title">
         <h2 id="honors-title">🎖 Honors &amp; Rewards</h2>
         <ul class="plain-list entry-list">
-          <li>第二十六届中国机器人及人工智能大赛，国家级一等奖</li>
-          <li>中国高校计算机大赛团体程序设计天梯赛，国家级三等奖</li>
-          <li>第十五届蓝桥杯全国软件和信息技术专业人才大赛，国家级优秀奖；江苏赛区省一等奖</li>
-          <li>苏州大学 2024 年创新创业创意大赛，三等奖</li>
-          <li>苏州大学学习优秀奖学金特等奖（2024–2025）、一等奖（2023–2024）</li>
-          <li>苏州大学创新创业奖学金特等奖（2023–2024）</li>
-          <li>苏州大学综合奖学金、精神文明专项奖（2024–2025）</li>
+          <li>26th China Robot and Artificial Intelligence Competition — National First Prize</li>
+          <li>Chinese Collegiate Computing Competition, Group Programming Ladder Tournament — National Third Prize</li>
+          <li>15th Lanqiao Cup National Software and IT Competition — National Excellence Award; Jiangsu Provincial First Prize</li>
+          <li>Soochow University 2024 Innovation and Entrepreneurship Competition — Third Prize</li>
+          <li>Soochow University Academic Excellence Scholarship — Special Prize (2024–2025), First Prize (2023–2024)</li>
+          <li>Soochow University Innovation and Entrepreneurship Scholarship — Special Prize (2023–2024)</li>
+          <li>Soochow University Comprehensive Scholarship and Civic Merit Award (2024–2025)</li>
         </ul>
       </section>
 
       <section id="skills" aria-labelledby="skills-title">
         <h2 id="skills-title">🛠 Skills</h2>
         <ul class="plain-list skills">
-          <li><strong>大模型后训练：</strong>SFT、GRPO、OPD、奖励驱动训练、<code>verl</code>、多卡训练、rollout、benchmark 评测与消融实验。</li>
-          <li><strong>编程与多模态：</strong>Python、C/C++、PyTorch、VLM、GUI grounding、模型迁移及视觉数据处理；GitHub 100+ Stars &amp; 100+ Followers。</li>
-          <li><strong>课程与基础：</strong>CS336、CS224N；Transformer、LLM 预训练与后训练、NLP 基础。</li>
-          <li><strong>CSP：</strong>370（前 1.34%）</li>
-          <li><strong>CET-6：</strong>659</li>
+          <li><strong>LLM post-training:</strong> SFT, GRPO, OPD, reward-driven training, <code>verl</code>, multi-GPU training, rollouts, benchmark evaluation, and ablation studies.</li>
+          <li><strong>Programming and multimodal ML:</strong> Python, C/C++, PyTorch, VLMs, GUI grounding, model migration, and visual-data pipelines; 100+ GitHub stars and 100+ followers.</li>
+          <li><strong>Coursework and foundations:</strong> CS336 and CS224N; Transformers, LLM pre-training and post-training, and NLP fundamentals.</li>
+          <li><strong>CSP:</strong> 370 (top 1.34%)</li>
+          <li><strong>CET-6:</strong> 659</li>
         </ul>
       </section>
     </main>
