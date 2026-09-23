@@ -144,11 +144,11 @@
           </div>
           <p class="entry-date">2026.09 – 2026.11</p>
           <p class="project-stack"><code>ms-swift</code> / SFT / GRPO / OPD / FSDP / vLLM</p>
-          <p class="project-background"><strong>项目背景：</strong>面向支付宝用户反馈场景：用户提交反馈并上传截图后，系统通过 UI 理解与推理判断用户遇到的状况，帮助用户排除问题，或将相关反馈交由开发团队处理。</p>
+          <p class="project-background"><strong>项目背景：</strong>本项目基于<strong>支付宝</strong>真实数据，面向用户反馈场景：用户提交反馈并上传截图后，系统通过 UI 理解与推理判断用户遇到的状况，帮助用户排除问题，或将相关反馈交由开发团队处理。</p>
           <ul class="project-points">
             <li><strong>后训练与对齐：</strong>基于定制版 <code>ms-swift</code> 搭建定位感知 SFT、教师 GRPO 和学生 OPD 训练链路。教师阶段针对输出格式、任务答案与回答长度设计奖励，每个问题采样 8 条回答计算组内相对优势；学生阶段在自身采样的轨迹上接受冻结教师指导，联合优化 GRPO 目标、输出分布的 reverse-KL 蒸馏和末层因果注意力的 JSD 蒸馏，将答案行为与关注上下文的位置一起对齐。</li>
-            <li><strong>分布式训练与消融：</strong>参与 4B／32B 模型在 16×A100 环境下的多卡训练、实验复现与结果分析；采用 DeepSpeed ZeRO 分片和梯度检查点控制显存占用，在教师 GRPO 与学生 OPD 阶段均设置格式、答案正确性、超长惩罚奖励，权重为 1.0∶1.0∶0.5，并启用动态采样。负责分阶段消融，对比 SFT、教师强化学习、学生 OPD，以及加入注意力蒸馏后的效果，拆解各阶段对最终表现的贡献。</li>
-            <li><strong>数据与效果评测：</strong>负责内部 UI 数据清洗、评测集整理和模型评测。采用VLM自动清洗标注管线标注数据超57万条，包含清洗和收集整理3大类任务，其中元素可用性类、信息架构类和设计一致性类分别23.2万、22.7万、11.6万条。利用多种benchmark进行评测，其中4B 学生模型在内部评测集上提升 <strong>33.4 个百分点</strong>；注意力蒸馏较仅使用输出蒸馏的方案进一步提升 <strong>2.7 个百分点</strong>；相较UI-TARS-7B模型，在UI-Vision和OSWorld-G基准上分别高出 <strong>9.1 个百分点</strong>和 <strong>11.0 个百分点</strong>。</li>
+            <li><strong>分布式训练与消融：</strong>参与 4B／32B 模型在 <strong>16×Nvidia A100 80G</strong> 环境下的多卡训练、实验复现与结果分析；采用 DeepSpeed ZeRO 分片和梯度检查点控制显存占用，在教师 GRPO 与学生 OPD 阶段均设置格式、答案正确性、超长惩罚奖励，权重为 <strong>1.0∶1.0∶0.5</strong>，并启用动态采样。负责分阶段消融，对比 SFT、教师强化学习、学生 OPD，以及加入注意力蒸馏后的效果，拆解各阶段对最终表现的贡献。</li>
+            <li><strong>数据与效果评测：</strong>负责内部 UI 数据清洗、评测集整理和模型评测。采用VLM自动清洗标注管线标注数据超57万条，包含清洗和收集整理3大类任务，其中元素可用性类、信息架构类和设计一致性类分别<strong>23.2万、22.7万、11.6万条</strong>。利用多种benchmark进行评测，其中4B 学生模型在内部评测集上提升 <strong>33.4 个百分点</strong>；注意力蒸馏较仅使用输出蒸馏的方案进一步提升 <strong>2.7 个百分点</strong>；相较UI-TARS-7B模型，在UI-Vision和OSWorld-G基准上分别高出 <strong>9.1 个百分点</strong>和 <strong>11.0 个百分点</strong>。</li>
           </ul>
         </div>
         <div class="internship">
