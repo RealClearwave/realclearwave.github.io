@@ -143,7 +143,7 @@
             <p class="project-focus">大模型后训练 / 强化学习 / 分布式训练</p>
           </div>
           <p class="entry-date">2026.09 – 至今</p>
-          <p class="project-stack"><code>ms-swift</code> / SFT / GRPO / OPD / FSDP / vLLM</p>
+          <p class="project-stack"><code>ms-swift</code> / SFT / GRPO / OPD / DeepSpeed / vLLM</p>
           <p class="project-background"><strong>背景：</strong>基于<strong>支付宝</strong>真实数据，处理用户反馈场景：用户提交反馈并上传截图后，系统通过 UI 理解与推理判断用户遇到的状况，帮助用户排除问题，或将相关反馈交由开发团队处理。</p>
           <ul class="project-points">
             <li><strong>后训练与对齐：</strong>基于定制版 <code>ms-swift</code> 搭建教师和学生 SFT、GRPO 后，学生继续 OPD 、Attention KD的训练链路。GRPO阶段每个问题采样 8 条回答计算组内相对优势；OPD阶段在自身采样的轨迹上接受冻结教师指导，通过输出分布的 reverse-KL 蒸馏和末层因果注意力的 JSD 蒸馏，将答案行为与关注上下文的位置一起对齐。</li>
