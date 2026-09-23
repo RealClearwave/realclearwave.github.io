@@ -61,6 +61,13 @@
     .internship .entry-date { color: var(--muted); font-size: 14px; font-weight: 400; }
     .internship ul { margin: 5px 0 0; padding-left: 23px; }
     .internship li { margin: 5px 0; }
+    .project-heading { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 4px 16px; }
+    .project-heading h3 { margin-bottom: 0; }
+    .project-focus { margin: 0; font-weight: 700; }
+    .internship > .entry-date { margin: 2px 0 6px; }
+    .project-stack { margin: 4px 0 8px; font-weight: 700; }
+    .project-background { margin: 0 0 8px; }
+    .internship .project-points { margin-top: 8px; }
     .skills li { margin: 6px 0; }
     footer { max-width: 1440px; margin: 0 auto; padding: 17px 22px 27px; border-top: 1px solid var(--line); color: #747980; font-size: 13px; }
     footer a { color: inherit; }
@@ -131,11 +138,17 @@
       <section id="internships" aria-labelledby="internships-title">
         <h2 id="internships-title">💻 Internships</h2>
         <div class="internship">
-          <h3>蚂蚁集团 · 多模态大模型后训练 <span class="entry-date">2026.09 – 2026.11</span></h3>
-          <ul>
-            <li>参与多模态 UI 推理模型对齐，基于 <code>verl</code> 搭建后训练与实验链路。在 Qwen3 系列 32B 教师模型和 4B 学生模型上开展定位感知 SFT、GRPO 与OPD；结合 reverse-KL、JSD 等损失函数，在学生模型采样轨迹上对齐输出行为与因果注意力；参与提出注意力蒸馏等UI特化OPD改进方案。</li>
-            <li>参与 4B／32B 模型的多卡训练、实验复现和结果分析，在 16×A100 环境完成训练与 benchmark 评测；围绕 SFT、RL、OPD 和注意力蒸馏开展消融实验，量化各阶段对模型性能的贡献。</li>
-            <li>负责 UI 数据集清洗、评测集整理和模型评测。4B 模型在该数据集上提升 33.4 个百分点，超过未经后训练的 32B 模型（80.2%）；引入注意力蒸馏后，较原版 OPD 进一步在 OSWorld-G、UI-Vision 上提升9.1个百分点和11百分点。</li>
+          <div class="project-heading">
+            <h3>蚂蚁集团 · 多模态 UI 推理模型后训练</h3>
+            <p class="project-focus">大模型后训练 / 强化学习 / 分布式训练</p>
+          </div>
+          <p class="entry-date">2026.09 – 2026.11</p>
+          <p class="project-stack">Qwen3 系列 32B 教师模型 / 4B 学生模型 / <code>verl</code> / SFT / GRPO / OPD / reverse-KL / JSD</p>
+          <p class="project-background"><strong>项目背景：</strong>围绕多模态 UI 推理与目标定位任务，使用强化学习和蒸馏将大模型的推理能力迁移到更轻量的学生模型。</p>
+          <ul class="project-points">
+            <li><strong>后训练与对齐：</strong>基于 <code>verl</code> 搭建训练和实验链路，开展定位感知 SFT、GRPO 与 OPD；在学生模型采样轨迹上，使用 reverse-KL 对齐输出行为，并以 JSD 对齐因果注意力。</li>
+            <li><strong>分布式训练与消融：</strong>参与 4B／32B 模型多卡训练、实验复现和结果分析，在 16×A100 环境完成训练与评测；拆解 SFT、RL、OPD 和注意力蒸馏各阶段的贡献。</li>
+            <li><strong>数据与效果评测：</strong>负责内部 UI 数据清洗、评测集整理和模型评测。4B 学生模型在内部评测集上提升 <strong>33.4 个百分点</strong>；注意力蒸馏较仅使用输出蒸馏的方案进一步提升 <strong>2.7 个百分点</strong>；相较一款 7B GUI 专项模型，在两项公开基准上分别高出 <strong>9.1 个百分点</strong>和 <strong>11.0 个百分点</strong>。</li>
           </ul>
         </div>
         <div class="internship">
